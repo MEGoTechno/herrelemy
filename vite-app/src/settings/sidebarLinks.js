@@ -104,7 +104,7 @@ export const sidebarLinks = [
         element: <PrivacyPage />
     }, {
         name: "الكورسات", icon: <LiaSchoolSolid size="22px" />,
-        to: "/grades", allowedTo: [user_roles.STUDENT, user_roles.ONLINE, user_roles.NOT_USER], element: <GradesPage />
+        to: "/grade", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], element: <GradesPage />
     }, {
         name: "محاضراتى", icon: <FaSchool size="22px" />, to: "/grades/" + store?.getState()?.global?.user?.grade,
         allowedTo: [user_roles.STUDENT, user_roles.ONLINE],
