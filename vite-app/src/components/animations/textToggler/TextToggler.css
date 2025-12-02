@@ -1,0 +1,73 @@
+#container {
+  color: #999;
+  text-transform: uppercase;
+  font-size: 36px;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+}
+
+#flip {
+  height: 60px;
+  overflow: hidden;
+  /* border: 5px solid green; */
+}
+
+#flip>div>div {
+  color: #fff;
+  padding: 4px 12px;
+  height: 100%;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+#flip div:first-child {
+  animation: show 5s linear infinite;
+}
+
+#flip div div {
+  background: #42c58a;
+}
+
+#flip div:first-child div {
+  background: orange;
+  /* #4ec7f3 */
+}
+
+#flip div:last-child div {
+  background: #DC143C;
+}
+
+@keyframes show {
+  0% {
+    margin-top: -270px;
+  }
+
+  5% {
+    margin-top: -160px;
+  }
+
+  33% {
+    margin-top: -160px;
+  }
+
+  38% {
+    margin-top: -80px;
+  }
+
+  66% {
+    margin-top: -80px;
+  }
+
+  71% {
+    margin-top: -3px;
+  }
+
+  99.99% {
+    margin-top: -3px;
+  }
+
+  100% {
+    margin-top: -270px;
+  }
+}

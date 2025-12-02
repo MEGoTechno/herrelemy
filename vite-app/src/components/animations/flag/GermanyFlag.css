@@ -1,0 +1,49 @@
+.container {
+    width: 100%;
+}
+
+#svg {
+    visibility: hidden;
+}
+
+/* Background */
+#bg {
+    fill: transparent;
+}
+
+/* Stripes */
+#flagTop {
+    stroke: #000;
+    stroke-width: 61;
+    fill: none;
+}
+
+#flagMid {
+    stroke: red;
+    stroke-width: 61;
+    fill: none;
+}
+
+#flagBot {
+    stroke: #ffcc00;
+    stroke-width: 61;
+    fill: none;
+}
+
+/* Pole */
+.flagPole {
+    fill: #e5e5e3;
+}
+
+#flagTopPole {
+    fill: #000;
+}
+
+#flagMidPole {
+    fill: red;
+}
+
+#flagBotPole {
+    fill: #ffcc00;
+}
+
