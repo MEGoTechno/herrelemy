@@ -10,6 +10,9 @@ import { sentryVitePlugin } from '@sentry/vite-plugin';
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {
   // const env = loadEnv(mode, process.cwd(), '');
+  // const env = loadEnv(mode, process.cwd());
+  // console.log("Loaded API KEY:", env.VITE_SENTRY_AUTH_TOKEN);
+  
   return {
     plugins: [{
       name: 'treat-js-files-as-jsx', // *js
