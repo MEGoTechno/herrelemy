@@ -24,7 +24,7 @@ function AboutUS() {
     ]
 
     return (
-        <Section sx={{ minHeight: '100vh', pb: '0 !important' }}>
+        <Section sx={{ pb: '0 !important' }}>
             <FlexRow sx={{ alignItems: 'stretch', height: '100%' }}>
                 <FlexColumn sx={{ flex: 1, position: 'relative' }}>
                     <Typography variant='h5'> الهيرر/ عليمي </Typography>
