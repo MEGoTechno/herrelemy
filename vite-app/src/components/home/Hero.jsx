@@ -62,7 +62,7 @@ function Hero() {
                     <Box>
                         <ScallyBtn
                             endIcon={<img style={{ width: '30px' }} alt='fernsehturm-berlin' src='./assets/beriln.svg' />}
-                            component={Link} to={'/grades/3'}
+                            component={Link} to={'/grades'}
                             sx={{
                                 position: 'relative', maxWidth: '300px', width: '100%', minWidth: 'auto',
                                 // backgroundColor: 'transparent', color: "neutral.0",

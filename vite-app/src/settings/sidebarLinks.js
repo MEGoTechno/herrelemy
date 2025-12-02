@@ -97,7 +97,7 @@ export const sidebarLinks = [
         name: "تسجيل الدخول", icon: <LoginIcon size="22px" />, to: "/login", allowedTo: [user_roles.NOT_USER],
         element: <LoginPage />, skipVerifyRoute: true
     }, {
-        name: "انشاء حساب", icon: <SignupIcon size="22px" />, to: "/signup", allowedTo: [user_roles.NOT_USER],
+        name: "انشاء حساب", icon: <img  src='/assets/beriln.svg' style={{maxWidth: '22px'}}/>, to: "/signup", allowedTo: [user_roles.NOT_USER],
         element: <SignupPage />, skipVerifyRoute: true
     }, {
         name: "سياسات الموقع", icon: <FcPrivacy size="22px" />, to: "/privacy",
@@ -193,10 +193,10 @@ export const sidebarLinks = [
     {
         name: "المدفوعات", icon: <SignupIcon size="22px" />, allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], // info: { title: 'تحت الانشاء', i: 2 }
     }, {
-        name: "وسائل الدفع", icon: <RiSecurePaymentFill size="22px" />, to: "/management/payments", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false, 
+        name: "وسائل الدفع", icon: <RiSecurePaymentFill size="22px" />, to: "/management/payments", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false,
         element: <ManagePaymentsPage />, id: 'payments'
     }, {
-        name: "الفواتير", icon: <PiInvoiceBold size="22px" />, to: "/management/invoices", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false, 
+        name: "الفواتير", icon: <PiInvoiceBold size="22px" />, to: "/management/invoices", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false,
         element: <InvoicesPage />, id: 'invoices'
     }, {
         name: 'المحفظه و المدفوعات', icon: <PiInvoiceBold size="22px" />, to: "/payments", allowedTo: [user_roles.ONLINE, user_roles.STUDENT],
@@ -205,7 +205,7 @@ export const sidebarLinks = [
         name: "اقتراح/شكوي", icon: <VscFeedback size="22px" />, to: "/feedBacks", allowedTo: [user_roles.ONLINE, user_roles.STUDENT],
         element: <FeedBacks />
     }, {
-        name: "اقتراحات/شكاوي", icon: <VscFeedback size="22px" />, to: "/management/feedBacks", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], 
+        name: "اقتراحات/شكاوي", icon: <VscFeedback size="22px" />, to: "/management/feedBacks", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <FeedBacks isAdmin={true} />, id: 'feedBacks'
     },
 ]
@@ -214,6 +214,8 @@ const otherLinks = [
     {
         index: true, element: <HomePage />,
 
+    }, {
+        path: '/grades', element: <GradesPage />
     }, {
         path: '/grades/:gradeId', element: <UnitsPage />
     }, {// Edit Path here 

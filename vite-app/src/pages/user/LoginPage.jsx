@@ -60,7 +60,7 @@ function LoginPage() {
                         <TextBorderAround>
 
                             {/* <ReactLoginIcon style={{ margin: '0 10px' }} size={'2rem'} /> */}
-                            <img src='./assets/education-globe-pencil.svg' style={{ maxWidth: '60px' }} />
+                            <img src='./assets/honor.svg' style={{ maxWidth: '60px' }} />
                             <span style={{ color: theme.palette.neutral[0] }}> {lang.LOGIN} </span>
                             <span style={{ marginRight: '10px' }}> {lang.ENTRY}</span>
                             <div style={{
