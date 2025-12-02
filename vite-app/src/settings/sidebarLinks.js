@@ -97,14 +97,14 @@ export const sidebarLinks = [
         name: "تسجيل الدخول", icon: <LoginIcon size="22px" />, to: "/login", allowedTo: [user_roles.NOT_USER],
         element: <LoginPage />, skipVerifyRoute: true
     }, {
-        name: "انشاء حساب", icon: <img  src='/assets/beriln.svg' style={{maxWidth: '22px'}}/>, to: "/signup", allowedTo: [user_roles.NOT_USER],
+        name: "انشاء حساب", icon: <img src='/assets/beriln.svg' style={{ maxWidth: '22px' }} />, to: "/signup", allowedTo: [user_roles.NOT_USER],
         element: <SignupPage />, skipVerifyRoute: true
     }, {
         name: "سياسات الموقع", icon: <FcPrivacy size="22px" />, to: "/privacy",
         element: <PrivacyPage />
     }, {
         name: "الكورسات", icon: <LiaSchoolSolid size="22px" />,
-        to: "/grades", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], element: <GradesPage />
+        to: "/grades", allowedTo: [user_roles.STUDENT, user_roles.ONLINE, user_roles.NOT_USER], element: <GradesPage />
     }, {
         name: "محاضراتى", icon: <FaSchool size="22px" />, to: "/grades/" + store?.getState()?.global?.user?.grade,
         allowedTo: [user_roles.STUDENT, user_roles.ONLINE],
