@@ -44,7 +44,7 @@ function Hero() {
 
                         <Typography
                             variant='banner' component={'h1'}
-                            sx={{ fontFamily: 'bla', fontSize: '6rem', lineHeight: '60px', textAlign: 'left', zIndex: 1, position: 'relative', textWrap: 'nowrap' }}>
+                            sx={{ fontFamily: 'bla !important', fontSize: '6rem', lineHeight: '60px', textAlign: 'left', zIndex: 1, position: 'relative', textWrap: 'nowrap' }}>
                             <span style={{ fontSize: '2rem' }}>الهيرر/</span> <br />
 
                             محمود <span style={{ color: theme.palette.primary.main, }}>عليمى <Box sx={{ width: '100%', maxWidth: '110px', position: 'absolute', zIndex: -5, bottom: '5px', right: '-75px' }}>

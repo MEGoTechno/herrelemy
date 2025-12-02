@@ -39,7 +39,8 @@ function AboutUS() {
                 <FlexColumn sx={{
                     flex: 1,
                     bgcolor: 'primary.dark', borderRadius: '22px', pt: '32px', justifyContent: 'space-between',
-                    background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.dark})`
+                    background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.dark})`,
+                    px: '16px'
                 }}>
 
                     <Typography variant='subtitle1' sx={{ color: 'grey.0', mb: '32px' }}>
