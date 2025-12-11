@@ -31,7 +31,7 @@ function Services() {
     return (
         <Section>
             <FlexColumn gap={'16px'}>
-                <TitleWithDividers title={'الطريق للالماني يبدا مع دويتش ابو غاليه'}
+                <TitleWithDividers title={'الطريق للألماني يبدا مع دويتش أبو غالية'}
                     sx={{ fontSize: '1.9rem' }}
                     icon={<img style={{ maxWidth: '80px' }} src='./assets/space.svg' />} />
 

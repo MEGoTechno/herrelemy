@@ -37,9 +37,9 @@ function TextBorderAround({ children }) {
 
 
 export const TextBorderWithIcons = ({ title = '', startIcon, endIcon, color, colorOne, sx = {} }) => {
-    const textInArr = title.split(" ")
+    const textInArr = typeof title === 'string' ? title.split(" ") : [title]
     return (
-        <FlexRow sx={{ justifyContent: 'center', my: '2.5rem', ...sx }}>
+        <FlexRow sx={{ justifyContent: 'center', my: '16px', ...sx }}>
 
             <TextBorderAround>
                 <FlexRow sx={{ gap: '12px' }}>

@@ -29,7 +29,7 @@ dotenv.config()
 const lectureParams = (query) => {
     return [
         { $filter: query.$filter },
-        { key: "grade", value: query.grade},
+        { key: "grade", value: query.grade },
         { key: "unit", value: query.unit, operator: "equal" },
         { key: "course", value: query.course, operator: "equal" },
         { key: "name", value: query.name },
@@ -132,7 +132,7 @@ const protectGetLectures = expressAsyncHandler(async (req, res, next) => {
         return next();
     }
 
-    const { isCenter, isFree, codes, paid, isGroups, select, populate } = req.query;
+    const { isCenter, isFree, codes, paid, isGroups, group, select, populate } = req.query;
     const orConditions = [];
 
     // Center condition
@@ -162,9 +162,9 @@ const protectGetLectures = expressAsyncHandler(async (req, res, next) => {
     }
 
     // // Groups condition
-    // if (isGroups && Array.isArray(user.groups) && user.groups.length > 0) {
-    //     orConditions.push({ groups: { $in: user.groups } });
-    // }
+    if (Array.isArray(user.groups) && user.groups.length > 0 && user?.groups?.includes(group)) {
+        orConditions.push({ groups: group }); //{ $in: user.groups }
+    }
 
     // If no matching conditions → return empty result
     if (orConditions.length === 0) {

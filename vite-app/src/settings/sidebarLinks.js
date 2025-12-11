@@ -178,10 +178,10 @@ export const sidebarLinks = [
         name: "انشاء كود", icon: <SiHashicorp size="22px" />, to: "/management/codes/create", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <CreateCodePage />, id: 'createCode'
     },
-    // {
-    //     name: "إدارة المجموعات", icon: <MdGroups size="22px" />, to: "/management/groups", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
-    //     element: <GetGroupsPage />, id: 'groups'
-    // },
+    {
+        name: "إدارة المجموعات", icon: <MdGroups size="22px" />, to: "/management/groups", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
+        element: <GetGroupsPage />, id: 'groups'
+    },
     {
         name: "إدارة سياسات الموقع", icon: <RiEditCircleFill size="22px" />, to: "/management/privacy", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <ManagePrivacyPage />, id: 'managePrivacy'

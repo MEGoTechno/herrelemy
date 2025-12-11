@@ -157,6 +157,7 @@ function GetGroups({ reset, setReset }) {
                 return <BtnModal
                     titleInSection={'الاعضاء فى جروب ' + params.row?.name}
                     btnName={'الاعضاء'}
+                    color={'success'}
                     component={
                         <Users
                             reset={reset}
@@ -207,7 +208,7 @@ function GetGroups({ reset, setReset }) {
                 const group = params.row
                 return <BtnModal
                     btnName={'عرض المحاضرات'} icon={<FaSchoolCircleCheck />}
-
+                    color={'warning'}
                     titleInSection={'عرض المحاضرات ' + group?.name}
                     component={<Lectures
                         reset={reset}

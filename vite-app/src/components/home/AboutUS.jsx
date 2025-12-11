@@ -49,7 +49,7 @@ function AboutUS() {
                     </Typography>
 
                     <FlexColumn>
-                        <Typography variant='h5' sx={{ color: 'grey.0' }}>مع دويتش ابو غاليه هتضمن مركزك</Typography>
+                        <Typography variant='h5' sx={{ color: 'grey.0' }}>مع دويتش أبو غالية هتضمن مركزك</Typography>
                         <img style={{ maxWidth: '250px', objectFit: 'contain' }} src='./assets/education-first-pedestal.svg' />
                     </FlexColumn>
                 </FlexColumn>

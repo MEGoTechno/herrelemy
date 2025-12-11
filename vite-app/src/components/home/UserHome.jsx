@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Section from '../../style/mui/styled/Section'
 import UserHeader from '../ui/UserHeader'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,6 +23,7 @@ import { FlexBetween, FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox
 import AdminHome from './AdminHome'
 import InfoText from '../ui/InfoText'
 import { HashLink } from 'react-router-hash-link'
+import UserGroups from '../groups/UserGroups'
 
 function UserHome() {
 
@@ -49,11 +50,7 @@ function UserHome() {
 
     useEffect(() => {
         const checkIslogged = async () => {
-            const isWorked = JSON.parse(sessionStorage.getItem('user'))
-            if (isWorked?.name) {
-                return
-            }
-            const { data } = await getUserData()
+            const { data } = await getUserData({}, true)
             const userData = data?.values
 
             dispatch(setUser({ ...user, ...userData }))
@@ -61,18 +58,13 @@ function UserHome() {
         checkIslogged()
     }, [])
 
-    // const [data, setData] = useState([
-    //     { name: "اختبارات", data: [10, 12, 9, 8, 6, 8, 16, 14, 12, 10, 11, 11], color: 'linear-gradient(#e66465, #188df0)' },
-    //     { name: "مشاهدات", data: [17, 12, 14, 13, 14, 2, 4, 11, 6, 8, 5, 8], color: 'linear-gradient(red, orange)' },
-    // ]);
-
     const [activeCompo, setActiveCompo] = useState(0)
 
     const btns = [
         <Button endIcon={<CoursesIcon />} fullWidth key={0} variant={activeCompo === 0 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(0)}>كورساتك</Button>,
         <Button endIcon={<VidsIcon2 />} fullWidth key={1} variant={activeCompo === 1 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(1)}>محاضرات خاصه</Button>,
         // <Button fullWidth key={2} variant={activeCompo === 2 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(2)}>محتوى مجموعاتك</Button>,
-        <Button fullWidth key={3} variant={activeCompo === 3 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(3)}> محاضرات مجانيه</Button>,
+        // <Button fullWidth key={3} variant={activeCompo === 3 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(3)}> محاضرات مجانيه</Button>,
     ]
 
     const compos = [
@@ -107,11 +99,21 @@ function UserHome() {
         },
     ]
 
-    if (user.role === user_roles.STUDENT) {
-        btns.push(<Button fullWidth key={4} variant={activeCompo === 4 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(4)}> محاضرات السنتر</Button>,)
-        compos.push({ compo: <UserLectures key={4} query={{ isCenter: true, grade: user.grade }} accordionTitle='محاضرات السنتر' />, value: 4 },)
-    }
-    // const categories = ['يناير', "فبراير", "مارس", "ابريل", "مايو", "يونيو", "يوليو", "اغسطس", "سبتمبر", "اكتوبر", "نوفبمر", "ديسمبر"]
+    const modifiedButtons = useMemo(() => {
+
+        const data = { btns, compos }
+        if (user.role === user_roles.STUDENT) {
+            data.btns.push(<Button fullWidth key={4} variant={activeCompo === 4 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(4)}> محاضرات السنتر</Button>,)
+            data.compos.push({ compo: <UserLectures key={4} query={{ isCenter: true, grade: user.grade }} accordionTitle='محاضرات السنتر' />, value: 4 },)
+        }
+
+        if (user.groups?.length) {
+            btns.push(<Button fullWidth key={5} variant={activeCompo === 5 ? 'contained' : 'outlined'} onClick={() => setActiveCompo(5)}>مجموعاتك</Button>,)
+            compos.push({ compo: <UserGroups key={5} user={user} accordionTitle='مجموعاتك' />, value: 5 },)
+        }
+
+        return { btns, compos }
+    }, [user.role, user.groups?.length, user.grade, activeCompo, compos])
 
     return (
         <Section sx={{ minHeight: '86vh' }}>
@@ -154,9 +156,9 @@ function UserHome() {
                     <TitleSection title={lang.YOUR_SUBSCRIPTIONS} />
 
                     <Grid min='120px' sx={{ width: '100%' }}>
-                        {btns}
+                        {modifiedButtons.btns}
                     </Grid>
-                    {compos.find(compo => compo.value === activeCompo)?.compo}
+                    {modifiedButtons.compos.find(compo => compo.value === activeCompo)?.compo}
                     <FlexColumn>
                         <Separator />
                         <Separator sx={{ width: '60%', opacity: "60%" }} />

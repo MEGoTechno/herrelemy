@@ -56,8 +56,8 @@ function Hero() {
                         </Box> */}
                         <Typography variant='subBanner' sx={{
                             position: 'relative', zIndex: 1,
-                        }}>فى اللغه <span style={{ color: 'orange' }}>الالمانيه</span></Typography>
-                        <TextToggler words={['بنعيشك الالماني', 'بيتك و مطرحك', 'دوله الالماني']} />
+                        }}>فى اللغه <span style={{ color: 'orange' }}>الألمانية</span></Typography>
+                        <TextToggler words={['بنعيشك الألماني', 'بيتك و مطرحك', 'دوله الألماني']} />
                     </FlexColumn>
                     <Box>
                         <ScallyBtn
