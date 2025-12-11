@@ -1,8 +1,9 @@
 import * as React from 'react';
 import ShowVid from './ShowVid';
 import ShowImg from './ShowImg';
-import { Alert } from '@mui/material';
+import { Alert, CardHeader,  IconButton, Typography } from '@mui/material';
 import ShowPdf from './ShowPdf';
+import { MdCancel } from 'react-icons/md';
 
 
 export default function ShowFileSettings({ file, removeFile }) {
@@ -41,6 +42,19 @@ export default function ShowFileSettings({ file, removeFile }) {
         return <ShowPdf file={realFile} removeFile={removeFile} />
     }
     return (
-        <Alert severity='error'>sorry, un supported file</Alert>
+        <CardHeader
+            title={
+                file?.original_filename || file?.name && (
+                    <Alert severity='error'><Typography>
+                        sorry, un supported file</Typography></Alert>
+                )}
+            subheader={removeFile && file.size && `size: ${file.size / 1000000} mg`}
+            action={
+                <IconButton aria-label="settings" onClick={removeFile}>
+                    {removeFile && <MdCancel style={{ color: 'red' }} />}
+                </IconButton>
+            }
+        />
+        // <Alert severity='error'>sorry, un supported file</Alert>
     );
 }

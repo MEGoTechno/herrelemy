@@ -148,7 +148,9 @@ function CoursePage() {
                 url={window.location.href}
             />
 
-            <HeaderContent title={courseDetails?.course?.name} body={<div dangerouslySetInnerHTML={{ __html: courseDetails?.course?.description }} />}
+            <HeaderContent
+                title={courseDetails?.course?.name}
+                body={<div dangerouslySetInnerHTML={{ __html: courseDetails?.course?.description }} />}
                 infos={[
                     {
                         caption: lang.LECTURES, desc: '+ ' + courseDetails?.counts?.videos, icon: <VidsIcon2 size='1.5rem' />
@@ -176,24 +178,6 @@ function CoursePage() {
                     </FlexColumn>
                     : <Loader />}
             </HeaderContent>
-
-            {/* Lecture Is Here */}
-            {/* <Outlet context={[getLectureCurrentIndex(), setCurrentIndex, currentIndex, courseDetails.course._id]} /> */}
-
-            {/* <TitleSection title={'محتوى الكورس'} /> */}
-
-            {/* <Box>
-                {courseDetails.lectures.length === 0 && status.isSuccess && (
-                    <Alert variant='filled' severity='warning'>المحاضرات هتنزل قريب , خليك متابع !</Alert>
-                )}
-                <Grid>
-                    {courseDetails.lectures.map((lecture, i) => {
-                        return <LectureUserCard
-                            key={i} lecture={lecture} currentIndex={currentIndex} lectureIndex={getLectureCurrentIndex()} i={i} isSubscribed={courseDetails?.course?.isSubscribed} />
-                    })}
-                </Grid>
-            </Box> */}
-
         </Section>
     )
 }

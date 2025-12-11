@@ -134,7 +134,7 @@ const makeInvoice = expressAsyncHandler(async (req, res, next) => {
 
     invoiceData.price = product.price;
     if (invoiceData.coupon && !(invoiceData.coupon === 'undefined' || invoiceData.coupon === 'null')) {
-        invoiceData.price = await useCoupon(invoiceData.coupon, user, product, { isWallet: true, isSave: true })
+        invoiceData.price = await useCoupon(invoiceData.coupon, user, product, { isWallet: payment.type === paymentInteg.WALLET, isSave: true })
     }
 
     const invoice = new InvoiceModel({
@@ -180,16 +180,7 @@ const makeInvoice = expressAsyncHandler(async (req, res, next) => {
             invoice.orderId = orderId
             await invoice.save()
             return res.status(201).json({ values: { redirectUrl: url }, message: 'سيتم تحويلك الي بوابه الدفع', status: SUCCESS })
-            // ########  End
-
-            // const token = await getAuthToken();
-            // const orderId = await createOrder(token, invoice.price * 100); // 100 EGP
-
-            // const paymentToken = await generatePaymentKey(token, invoice.price * 100, orderId, billingData);
-            // invoice.orderId = orderId
-            // await invoice.save()
-            // const redirectUrl = iframeURL(paymentToken)
-            // return res.status(201).json({ values: { redirectUrl }, message: 'سيتم تحويلك الي بوابه الدفع', status: SUCCESS })
+        // ########  End
         default:
             // Normal as Cashes pending
             await invoice.save()
