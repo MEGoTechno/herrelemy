@@ -25,7 +25,6 @@ function Hero() {
                 {/* content */}
                 <FlexColumn
                     flex={1}
-                    minHeight={"80vh"}
                     maxWidth={"500px"}
                     gap={'.7rem'}
                     sx={{
@@ -64,7 +63,7 @@ function Hero() {
                             endIcon={<img style={{ width: '30px' }} alt='fernsehturm-berlin' src='./assets/beriln.svg' />}
                             component={Link} to={'/grades'}
                             sx={{
-                                position: 'relative', maxWidth: '300px', width: '100%', minWidth: 'auto',
+                                position: 'relative', maxWidth: '300px', width: '100%', minWidth: 'auto', my: '22px',
                                 // backgroundColor: 'transparent', color: "neutral.0",
                                 borderRadius: 0,
                                 fontSize: '1.6rem',
@@ -113,7 +112,20 @@ function Hero() {
 
                 {/* banner */}
                 <FlexColumn>
-                    <img style={{ maxWidth: '600px', }} alt='logo' src="/assets/hero.webp" />
+                    <Box
+                        component="img"
+                        src="/assets/hero.webp"
+                        alt="logo"
+                        sx={{
+                            width: "100%",
+                            maxWidth: {
+                                sm: 450,   // tablets
+                                lg: 600,   // small laptops
+                            },
+                            display: "block",
+                            margin: "0 auto", // center image
+                        }}
+                    />
                 </FlexColumn>
             </FlexRow>
         </Section >
