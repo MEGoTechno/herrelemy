@@ -159,6 +159,11 @@ export const themeSettings = (mode) => {
         },
         typography: typographies,
         components: {
+            MuiButton: {
+                defaultProps: {
+                    color: 'secondary',
+                },
+            },
             MuiCssBaseline: {
                 styleOverrides: (themeParam) => ({
                     // '*': {

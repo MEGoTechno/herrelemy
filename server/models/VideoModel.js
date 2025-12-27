@@ -7,6 +7,10 @@ const videoSchema = new mongoose.Schema({
     player: { type: String, enum: [filePlayers.SERVER, filePlayers.YOUTUBE, filePlayers.BUNNY, filePlayers.BUNNY_UPLOAD] },
     isButton: { type: Boolean, default: false },
     duration: { type: String }, //ms params
+
+    minDuration: Number,
+    // canPass: Boolean,
+
     size: { type: Number }, //bytes
     resource_type: { type: String },
 }, {

@@ -19,12 +19,11 @@ function Hero() {
     const theme = useTheme()
 
     return (
-        <Section sx={{ position: " relative" }}>
+        <Section sx={{ position: " relative", minHeight: '86vh', display: 'flex', justifyContent: 'center' }}>
 
-            <FlexRow justifyContent={'space-around'} >
+            <FlexRow justifyContent={'space-around'} width={'100%'} >
                 {/* content */}
                 <FlexColumn
-                    flex={1}
                     maxWidth={"500px"}
                     gap={'.7rem'}
                     sx={{

@@ -41,7 +41,7 @@ function FormatTimer({ time, setTime, submit, exam }) {
             justifyContent={"center"}
             alignItems={'center'}
             gap={'6px'}
-            bgcolor={time <= 60 * 1000 ? theme.palette.error.main : theme.palette.primary[600]}
+            bgcolor={time <= 60 * 1000 ? theme.palette.error.main : theme.palette.secondary[600]}
             sx={{ transition: "all ease 2s" }}
             borderRadius={"8px"}
             p="10px"

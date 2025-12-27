@@ -59,8 +59,6 @@ const countStatistics = expressAsyncHandler(async (req, res, next) => {
     if (!videoStatistics) {
         const mainEvents = handelEvents([], newMainEvent, watchedTime, currentTime)
 
-
-
         await Promise.all([
             UserModel.findByIdAndUpdate(
                 user._id,

@@ -3,7 +3,7 @@ import { useGetLectureAndCheckQuery, useLazyGetLectureAndCheckQuery, usePassLect
 import { useLocation, useOutletContext, useParams } from 'react-router-dom'
 import LoaderSkeleton from '../../style/mui/loaders/LoaderSkeleton'
 import { FlexColumn } from '../../style/mui/styled/Flexbox'
-import { FilledHoverBtn, OutLinedHoverBtn } from '../../style/buttonsStyles'
+import {  OutLinedHoverBtn } from '../../style/buttonsStyles'
 import usePostData from '../../hooks/usePostData'
 import WrapperHandler from '../../tools/WrapperHandler'
 import sectionConstants from '../../settings/constants/sectionConstants'
@@ -45,6 +45,11 @@ function LecturePage() {
         await passLecture({ courseId: course, lectureId: lecture._id, nextLectureIndex }) //linked to
         setCurrentIndex(nextLectureIndex)
     }
+
+
+    // const canPassVideo = lecture?.video ? true : true //
+    const canPassLecture = (lectureIndex === currentIndex && currentIndex !== 0) || false
+
     return (
         <FlexColumn sx={{ minHeight: '90vh', backgroundColor: 'background.alt', borderRadius: '16px', p: '12px', width: '100%' }}>
 
@@ -53,7 +58,7 @@ function LecturePage() {
             )}
 
             {(lecture?.sectionType !== sectionConstants.EXAM || lecture.exam?.attempts.length !== 0 || (dayjs().isAfter(dayjs(lecture.dateEnd)))) && (
-                <OutLinedHoverBtn onClick={() => passed()} disabled={status.isLoading || (lectureIndex !== currentIndex && currentIndex !== 0) || false} > {(lectureIndex === currentIndex) ? 'تعليم كتم الانتهاء' : 'تم الانتهاء'} ! </OutLinedHoverBtn>
+                <OutLinedHoverBtn onClick={() => passed()} disabled={status.isLoading || !canPassLecture} > {(lectureIndex === currentIndex) ? 'تعليم كتم الانتهاء' : 'تم الانتهاء'} ! </OutLinedHoverBtn>
             )}
             <WrapperHandler status={status} showSuccess={true} />
         </FlexColumn>

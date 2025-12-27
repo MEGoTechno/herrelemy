@@ -36,7 +36,7 @@ export default function AttemptHeader({ exam }) {
                         justifyContent={"center"}
                         alignItems={'center'}
                         gap={'6px'}
-                        bgcolor={theme.palette.primary[600]}
+                        bgcolor={theme.palette.secondary[600]}
                         sx={{ transition: "all ease 2s", my: "12px" }}
                         borderRadius={"8px"}
                         p="10px"

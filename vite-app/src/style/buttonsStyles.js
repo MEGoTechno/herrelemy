@@ -6,11 +6,11 @@ export const buttonStyle = (theme) => {
         minWidth: '150px',
         fontWeight: "700",
         margin: "6px 2px",
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.secondary.main,
         color: theme.palette.grey[0],
         borderRadius: "16px",
         "&:hover": {
-            backgroundColor: theme.palette.primary.dark
+            backgroundColor: theme.palette.secondary.dark
         },
         "&.Mui-disabled": {
             // background: "initial",
@@ -102,15 +102,15 @@ export const filledHoverBtnStyle = (theme, colorm) => {
         width: 'fit-content',
         fontWeight: "700",
         margin: "6px 2px",
-        backgroundColor: colorm || theme.palette.primary?.main,
+        backgroundColor: colorm || theme.palette.secondary?.main,
         color: theme.palette.grey[0],
         border: `2px solid transparent`,
         transition: '.5s ease',
         borderRadius: '1rem',
         "&:hover": {
             backgroundColor: 'transparent', //theme.palette.grey[0]
-            color: colorm || theme.palette.primary?.main,
-            border: `2px solid ${colorm || theme.palette.primary?.main}`,
+            color: colorm || theme.palette.secondary?.main,
+            border: `2px solid ${colorm || theme.palette.secondary?.main}`,
 
         }
     }

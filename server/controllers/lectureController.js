@@ -248,6 +248,7 @@ const createLecture = expressAsyncHandler(async (req, res, next) => {
 
             isButton: lecture.isButton || false,
             duration: lecture.duration,
+            minDuration: lecture.minDuration
         }
         switch (lecture.player) {
             case filePlayers.YOUTUBE: //done
@@ -398,7 +399,6 @@ const handleLectureDelete = async (lectureId) => {
         LectureModel.findByIdAndDelete(lectureId)
     ])
 }
-
 
 //route content/lectures/:id
 //method DELETE

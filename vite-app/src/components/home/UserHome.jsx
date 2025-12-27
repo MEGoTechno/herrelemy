@@ -55,7 +55,7 @@ function UserHome() {
 
             dispatch(setUser({ ...user, ...userData }))
         }
-        checkIslogged()
+        // checkIslogged()
     }, [])
 
     const [activeCompo, setActiveCompo] = useState(0)
