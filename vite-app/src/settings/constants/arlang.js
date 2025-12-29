@@ -28,7 +28,7 @@ export const lang = {
     LogoUri: '/assets/logo.webp',
     Socials: [
         {
-            to: 'https://www.facebook.com/share/1RA6dgT8K9', image: './assets/facebook.svg', title: 'صفحه الفيس',
+            to: 'https://www.facebook.com/share/1RA6dgT8K9', image: '/assets/facebook.svg', title: 'صفحه الفيس',
             icon: <IconButton sx={{ color: 'neutral.0' }} component={Link} to={'https://www.facebook.com/share/1RA6dgT8K9'}>
                 <FaFacebook style={{
                     color: 'inherit',
@@ -36,10 +36,10 @@ export const lang = {
             </IconButton>
         },
         {
-            to: 'https://www.facebook.com/share/g/1DFoa75gUE', image: './assets/worldwide-world.svg', title: 'جروب الطلاب'
+            to: 'https://www.facebook.com/share/g/1DFoa75gUE', image: '/assets/worldwide-world.svg', title: 'جروب الطلاب'
         },
         {
-            to: 'https://youtube.com/@herrelemy?si=Zg5_-v5iCG2B7NDA', image: './assets/youtube.svg', title: 'Youtube',
+            to: 'https://youtube.com/@herrelemy?si=Zg5_-v5iCG2B7NDA', image: '/assets/youtube.svg', title: 'Youtube',
             icon: <IconButton sx={{ color: 'neutral.0' }} component={Link} to={'https://youtube.com/@herrelemy?si=Zg5_-v5iCG2B7NDA'}>
                 <FiYoutube style={{
                     color: 'inherit',
@@ -47,7 +47,7 @@ export const lang = {
             </IconButton >
         },
         {
-            to: 'https://www.tiktok.com/@herrelemy?_r=1&_t=ZS-91rmiK8gnln', image: './assets/tiktok.svg', title: 'Tiktok', icon: <IconButton sx={{ color: 'neutral.0' }} component={Link} to={'https://www.tiktok.com/@herrelemy?_r=1&_t=ZS-91rmiK8gnln'}>
+            to: 'https://www.tiktok.com/@herrelemy?_r=1&_t=ZS-91rmiK8gnln', image: '/assets/tiktok.svg', title: 'Tiktok', icon: <IconButton sx={{ color: 'neutral.0' }} component={Link} to={'https://www.tiktok.com/@herrelemy?_r=1&_t=ZS-91rmiK8gnln'}>
                 <FaTiktok style={{
                     color: 'inherit',
                 }} />
