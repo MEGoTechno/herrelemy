@@ -65,7 +65,7 @@ function FooterPage() {
                         &lt;ME&gt;
                     </Typography>
                 </FlexRow>
-                <FlexRow gap={'12px'}>
+                <FlexRow gap={'12px'} justifyContent={'center'}>
                     <Typography component={Link} to={lang.WhatsAppContact} variant='body2' sx={{ color: "grey.0", textDecoration: 'none' }} noWrap>
                         تم التطوير بواسطه <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>Menassty for Education Services </span>
                     </Typography>
