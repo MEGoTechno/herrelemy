@@ -16,7 +16,6 @@ import examMethods from "../../settings/constants/examMethods"
 import { isDevelop } from "../../tools/isDevelop"
 import { Alert, Box, Typography } from "@mui/material"
 import PaymentMethods from "../payment/PaymentMethods"
-import products from "../../settings/constants/products"
 
 function UserQuestionsBank({ grade }) {
     const navigate = useNavigate()
@@ -56,7 +55,6 @@ function UserQuestionsBank({ grade }) {
     useEffect(() => {
         fetchFc()
     }, [grade])
-
     //Payments
     const [open, setOpen] = useState(false)
     const [tagToPay, setTagToPay] = useState()
@@ -114,24 +112,13 @@ function UserQuestionsBank({ grade }) {
     const onSubmit = async (values) => {
         const res = await startBank(values)
 
-        // if (res.length > 0) {
-        //     navigate('/exams/' + values.method, {
-        //         state: { questions: res, method: values.method, name: 'بنك الاسئله : ' + res.length + ' اسئله' }
-        //     })
-        // }
-
-        if (Array.isArray(res) && res.length > 0) {
-            setTimeout(() => {
-                navigate(`/exams/${encodeURIComponent(values.method)}`, {
-                    state: {
-                        questions: res,
-                        method: values.method,
-                        name: `بنك الاسئله : ${res.length} اسئله`
-                    }
-                });
-            }, 100);
-        }
-        //exams/_id
+        navigate(`/exams/` + values.method, {
+            state: {
+                questions: res,
+                method: values.method,
+                name: `بنك الاسئله : ${res.length} اسئله`
+            }
+        });
     }
 
     const setCoupon = (coupon) => {

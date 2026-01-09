@@ -16,7 +16,7 @@ function QuestionsBankPage() {
                 title={'بنك الاسئله'}
                 icon={<PiBankBold size={'40px'} color={'inherit'} />}
                 desc='اختار العناوين التى من خلالها ستظهر الاسئله الخاصه بها ثم حدد عدد الاسئله التى تريد الاختبار عليها' />
-            <GradesTabs removeAll grade={grade} setGrade={setGrade} />
+            <GradesTabs removeAll grade={grade} setGrade={setGrade} counts={{}} />
             <UserQuestionsBank grade={grade} />
         </Section>
     )

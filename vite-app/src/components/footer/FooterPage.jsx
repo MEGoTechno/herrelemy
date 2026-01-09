@@ -39,7 +39,7 @@ function FooterPage() {
                     <Typography variant='subtitle1' sx={{ textTransform: 'none', color: 'grey.0', textWrap: 'nowrap' }}>التواصل واتساب فقط</Typography>
                     <FlexRow component={Link} to={"https://api.whatsapp.com/send?phone=" + lang.Contact_Whatsapp} sx={{ textDecoration: 'none' }}>
                         <IconButton>
-                            <Image borderRadius='0' img={'./assets/whatsapp.svg'} maxWidth='25px' ratio={'auto'} />
+                            <Image borderRadius='0' img={'/assets/whatsapp.svg'} maxWidth='25px' ratio={'auto'} />
                         </IconButton>
                         <Typography variant='overline' sx={{ textTransform: 'none', color: 'grey.0', textWrap: 'nowrap' }}>{lang.Contact_Whatsapp.replace('20', '')}</Typography>
                     </FlexRow>
