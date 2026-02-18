@@ -25,9 +25,8 @@ const CourseModel = require("./models/CourseModel")
 const LectureModel = require("./models/LectureModel")
 const ChapterModel = require("./models/ChapterModel")
 const GradeModel = require("./models/GradeModel")
-const gradeConstants = require("./tools/constants/gradeConstants")
-const { getPaymentMethods } = require("./tools/payments/fawaterk")
-const PaymentModel = require("./models/PaymentModel")
+// const { getPaymentMethods } = require("./tools/payments/fawaterk")
+// const PaymentModel = require("./models/PaymentModel")
 
 
 // config
@@ -102,12 +101,12 @@ app.use(
 process.env.NODE_ENV === 'development' && app.use(morgan('tiny'))
 process.env.NODE_ENV === 'development' && app.use("/test", testRoutes)
 process.env.NODE_ENV === 'development' && app.use("/api/test", testRoutes)
-process.env.NODE_ENV === 'development' && app.get("/api/test/fawaterk", async (req, res) => {
-    console.log('init')
-    const data = await getPaymentMethods()
-    console.log('after')
-    res.status(200).json({ data })
-})
+// process.env.NODE_ENV === 'development' && app.get("/api/test/fawaterk", async (req, res) => {
+//     console.log('init')
+//     const data = await getPaymentMethods()
+//     console.log('after')
+//     res.status(200).json({ data })
+// })
 
 const port = process.env.PORT || 3030
 const DB_URI = process.env.MONGO_URI
@@ -162,10 +161,6 @@ connectDb()
 
 //index
 //Chapter, question => ref to Number
-const fixGrades = async () => {
-    const grades = await GradeModel.insertMany(gradeConstants)
-    console.log('done ==', grades)
-}
 
 app.listen(port, '0.0.0.0', async () => {
     // await appendDefaultChapters()
