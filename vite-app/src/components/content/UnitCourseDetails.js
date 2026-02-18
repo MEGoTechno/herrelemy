@@ -57,7 +57,7 @@ function UnitCourseDetails({ course, subscribedAt, lastLectureAt = false, curren
                             <TabInfo fontSize={'9px'} count={getFullDate(subscribedAt)} i={'2'} title={'تاريخ الاشتراك '} icon={<MdDateRange size='.8rem' />} isBold={false} />
                         )}
                         {course.dateEnd && (
-                            <TabInfo fontSize={'9px'} count={getFullDate(course.dateEnd)} i={3} title={"موعد نهايه الكورس"} icon={<RiFolderUnknowFill size='.8rem' />} isBold={false} />
+                            <TabInfo fontSize={'9px'} count={getFullDate(course.dateEnd)} i={3} title={"موعد نهايه الكورس"} icon={<RiFolderUnknowFill size='1.3rem' />} isBold={false} />
                         )}
                     </FlexColumn>
                 </>
@@ -90,10 +90,12 @@ function UnitCourseDetails({ course, subscribedAt, lastLectureAt = false, curren
                         <TabInfo count={getFullDate(course.dateStart)} i={'0'} title={"موعد بدايه الكورس"} icon={<RiFolderUnknowFill size='1.3rem' />} isBold={false} />
                     )} */}
 
-                    {/* {(course.isFixed && !currentIndex) && (
+                    {(course.isFixed && !currentIndex) && (
                         <TabInfo sx={{ width: '100%' }} count={"كورس مثبت"} i={0} icon={<MdGpsFixed size='1.3rem' />} isBold={false} />
-                    )} */}
-                    {course.price === 0 && (
+
+                    )}
+              
+                    {(course.price === 0 && (course.isSalable ?? true))&& (
                         <FlexColumn sx={{ width: '100%' }}>
                             <Chip label="كورس مجانى !" size='small' variant="contained" sx={{ bgcolor: orange[800], backgroundImage: 'linear-gradient(to right,#f43f5e, #a855f7)', color: 'white' }} icon={<IoIosRadio size="1.3rem" color="#fff" />} />
                         </FlexColumn>
@@ -101,7 +103,7 @@ function UnitCourseDetails({ course, subscribedAt, lastLectureAt = false, curren
                 </FlexBetween>
 
 
-                {!subscribedAt && (
+                {(!subscribedAt  && (course.isSalable ?? true) )&& (
                     <Box flex={1}>
 
                         <RowInfo title={'سعر الكورس'} desc={<Typography variant='subtitle2' >{course.price} جنيها</Typography>} icon={<AiFillPoundCircle size='1rem' />} bgcolor='primary.500' />
