@@ -1,13 +1,12 @@
 import * as React from 'react';
 import ShowVid from './ShowVid';
 import ShowImg from './ShowImg';
-import { Alert, CardHeader,  IconButton, Typography } from '@mui/material';
+import { Alert, Button } from '@mui/material';
 import ShowPdf from './ShowPdf';
-import { MdCancel } from 'react-icons/md';
+import { FlexColumn } from '../../../style/mui/styled/Flexbox';
 
 
 export default function ShowFileSettings({ file, removeFile }) {
-    // console.log(file)
     const fileType = file?.resource_type?.split("/")[0] || file?.type?.split("/")[0] || null
 
     const [realFile, setFile] = React.useState({})
@@ -42,19 +41,9 @@ export default function ShowFileSettings({ file, removeFile }) {
         return <ShowPdf file={realFile} removeFile={removeFile} />
     }
     return (
-        <CardHeader
-            title={
-                file?.original_filename || file?.name && (
-                    <Alert severity='error'><Typography>
-                        sorry, un supported file</Typography></Alert>
-                )}
-            subheader={removeFile && file.size && `size: ${file.size / 1000000} mg`}
-            action={
-                <IconButton aria-label="settings" onClick={removeFile}>
-                    {removeFile && <MdCancel style={{ color: 'red' }} />}
-                </IconButton>
-            }
-        />
-        // <Alert severity='error'>sorry, un supported file</Alert>
+        <FlexColumn>
+            <Alert severity='error'>sorry, un supported file</Alert>
+            <Button variant='outlined' color='error' onClick={removeFile}>ازاله الملف</Button>
+        </FlexColumn>
     );
 }

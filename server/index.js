@@ -26,6 +26,8 @@ const LectureModel = require("./models/LectureModel")
 const ChapterModel = require("./models/ChapterModel")
 const GradeModel = require("./models/GradeModel")
 const gradeConstants = require("./tools/constants/gradeConstants")
+const { getPaymentMethods } = require("./tools/payments/fawaterk")
+const PaymentModel = require("./models/PaymentModel")
 
 
 // config
@@ -54,8 +56,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json({limit: '3mb'}))
+app.use(bodyParser.urlencoded({ extended: true ,limit: '3mb'}))
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(device.capture());
@@ -80,7 +82,7 @@ app.use('/api/get-ip', (req, res, next) => {
 })
 // 'http://localhost:3000', , 'https://www.mrelbeltagy.com' 'http://192.168.1.16:3000',
 
-const origin = ['https://herrelemy.com','https://herrelemy.vercel.app']
+const origin = ['https://herrelemy.com', 'https://herrelemy.vercel.app']
 process.env.NODE_ENV === 'development' && origin.push(...['http://192.168.1.11:3000', 'http://localhost:3000', 'http://192.168.1.13:3000'])
 
 app.use(cors(
@@ -100,6 +102,12 @@ app.use(
 process.env.NODE_ENV === 'development' && app.use(morgan('tiny'))
 process.env.NODE_ENV === 'development' && app.use("/test", testRoutes)
 process.env.NODE_ENV === 'development' && app.use("/api/test", testRoutes)
+process.env.NODE_ENV === 'development' && app.get("/api/test/fawaterk", async (req, res) => {
+    console.log('init')
+    const data = await getPaymentMethods()
+    console.log('after')
+    res.status(200).json({ data })
+})
 
 const port = process.env.PORT || 3030
 const DB_URI = process.env.MONGO_URI
@@ -107,6 +115,7 @@ const DB_URI = process.env.MONGO_URI
 app.use('/storage', express.static(path.join(__dirname, 'storage')))
 //routes config
 app.use((req, res, next) => {
+    if (process.env.NODE_ENV === 'development') return next()
     // const excludedRoutes = ['/', '/payment/callback', '/payment/webhook'];
     const excludedPrefixes = ['/api/invoices/webhook']
 
@@ -160,6 +169,7 @@ const fixGrades = async () => {
 
 app.listen(port, '0.0.0.0', async () => {
     // await appendDefaultChapters()
+    // await PaymentModel.updateOne({ index: 9 }, { name: 'Visa', type: 'fawaterk', fawaterkPaymentId: 2 })
     console.log(`the app is working on port: ${port}`)
 })
 
