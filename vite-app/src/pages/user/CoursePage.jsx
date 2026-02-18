@@ -38,7 +38,6 @@ function CoursePage() {
         const trigger = async () => {
             const { lectures, course, currentIndex } = await getCourseAndLectures({ index: params.courseId })
             const allLectures = lectures?.flatMap(ch => ch.lectures)
-
             let counts = {
                 videos: allLectures.filter(lecture => lecture.sectionType === sectionConstants.VIDEO)?.length,
                 files: allLectures.filter(lecture => lecture.sectionType === sectionConstants.FILE)?.length,
@@ -131,7 +130,7 @@ function CoursePage() {
                         return <LectureUserCard
                             key={lecture._id}
                             currentUserIndex={currentUserIndex}
-                            lecture={lecture}
+                            lecture={lecture} 
                             currentLectureIndex={lectureIndexInCourse} i={i} isSubscribed={courseDetails?.course?.isSubscribed}
                         />
                     }) : ''}
@@ -146,11 +145,10 @@ function CoursePage() {
                 title={'صفحه الكورسات - ' + courseDetails?.course?.name}
                 desc={lang.Course_Description}
                 url={window.location.href}
+                isSiteLink={true}
             />
 
-            <HeaderContent
-                title={courseDetails?.course?.name}
-                body={<div dangerouslySetInnerHTML={{ __html: courseDetails?.course?.description }} />}
+            <HeaderContent title={courseDetails?.course?.name} body={<div dangerouslySetInnerHTML={{ __html: courseDetails?.course?.description }} />}
                 infos={[
                     {
                         caption: lang.LECTURES, desc: '+ ' + courseDetails?.counts?.videos, icon: <VidsIcon2 size='1.5rem' />
@@ -169,7 +167,7 @@ function CoursePage() {
             >
                 {(courseDetails?.course) ?
                     <FlexColumn>
-                        <CourseSubscribeCard course={courseDetails?.course} isSubscribed={courseDetails?.course?.isSubscribed} setCourseDetails={setCourseDetails} setCurrentUserIndex={setCurrentUserIndex} />
+                        <CourseSubscribeCard chapters={courseDetails?.chapters} course={courseDetails?.course} isSubscribed={courseDetails?.course?.isSubscribed} setCourseDetails={setCourseDetails} setCurrentUserIndex={setCurrentUserIndex} />
                         <FlexColumn width={'100%'} gap={'12px'}>
                             {isLargeScreen && params.lectureId && (
                                 courseChapters
@@ -178,6 +176,24 @@ function CoursePage() {
                     </FlexColumn>
                     : <Loader />}
             </HeaderContent>
+
+            {/* Lecture Is Here */}
+            {/* <Outlet context={[getLectureCurrentIndex(), setCurrentIndex, currentIndex, courseDetails.course._id]} /> */}
+
+            {/* <TitleSection title={'محتوى الكورس'} /> */}
+
+            {/* <Box>
+                {courseDetails.lectures.length === 0 && status.isSuccess && (
+                    <Alert variant='filled' severity='warning'>المحاضرات هتنزل قريب , خليك متابع !</Alert>
+                )}
+                <Grid>
+                    {courseDetails.lectures.map((lecture, i) => {
+                        return <LectureUserCard
+                            key={i} lecture={lecture} currentIndex={currentIndex} lectureIndex={getLectureCurrentIndex()} i={i} isSubscribed={courseDetails?.course?.isSubscribed} />
+                    })}
+                </Grid>
+            </Box> */}
+
         </Section>
     )
 }
