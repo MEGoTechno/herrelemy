@@ -5,7 +5,7 @@ import ActivateWhats from './ActivateWhats'
 function Whatsapp() {
     return (
         <Box>
-            {/* <GetWhatsStatus /> */}
+            <GetWhatsStatus />
             <ActivateWhats />
         </Box>
     )

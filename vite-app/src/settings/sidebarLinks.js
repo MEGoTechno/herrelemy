@@ -174,7 +174,7 @@ export const sidebarLinks = [
     }, {
         name: "عرض الكوبونات", icon: <MdOutlineCurrencyPound size="22px" />, to: "/management/coupons", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <GetCouponsPage />, id: 'coupons'
-    }, 
+    },
     // {
     //     name: "انشاء كود", icon: <SiHashicorp size="22px" />, to: "/management/codes/create", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
     //     element: <CreateCodePage />, id: 'createCode'
@@ -187,10 +187,10 @@ export const sidebarLinks = [
         name: "إدارة سياسات الموقع", icon: <RiEditCircleFill size="22px" />, to: "/management/privacy", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <ManagePrivacyPage />, id: 'managePrivacy'
     },
-    //  {
-    //     name: "تقارير الطلاب", icon: <TbReportSearch size="22px" />, to: "/management/reports", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
-    //     element: <ReportsPage />, id: 'stdReports'
-    // }, 
+    {
+        name: "تقارير الطلاب", icon: <TbReportSearch size="22px" />, to: "/management/reports", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
+        element: <ReportsPage />, id: 'stdReports', info: { i: 1, title: 'New' }
+    },
     {
         name: "المدفوعات", icon: <SignupIcon size="22px" />, allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], // info: { title: 'تحت الانشاء', i: 2 }
     }, {

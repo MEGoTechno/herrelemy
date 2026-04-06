@@ -106,14 +106,6 @@ function LecturesPage() {
             type: 'singleSelect',
             width: 200,
             valueOptions: makeArrWithValueAndLabel(grades, { value: 'index', label: 'name' }),
-            renderCell: (params) => {
-                const grade = grades.find(({ index }) => index === params.row.grade)
-                return (
-                    <Typography>
-                        {grade.name}
-                    </Typography>
-                )
-            }
         },
         {
             field: 'users',
@@ -282,7 +274,7 @@ function LecturesPage() {
                     useUpdate: useUpdateLectureMutation,
                     columns, isMultiPart: true,
                     fetchFilters: { populate: 'course', isModernSort: true },
-                    exportObj, exportTitle: "المحاضرات"
+                    exportObj: exportObj(grades), exportTitle: "المحاضرات"
                     //     fetchFc,
                     //     useDelete: useRemoveAnswerMutation,
                     //     columns, reset, loading,fetchFilters,

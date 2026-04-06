@@ -1,5 +1,5 @@
 const expressAsyncHandler = require("express-async-handler")
-const { getAll, insertOne, updateOne, deleteOne } = require("./factoryHandler")
+// const { getAll, insertOne, updateOne, deleteOne } = require("./factoryHandler")
 const createError = require("../tools/createError")
 const { FAILED, SUCCESS } = require("../tools/statusTexts");
 const WhatsappService = require("../tools/whatsappClient"); // now w small
@@ -41,11 +41,11 @@ const closeWhatsapp = expressAsyncHandler(async (req, res, next) => {
     const { isLogout: isLogoutQuery } = req.query
     const isLogout = isLogoutQuery === 'true'
 
-    const status = await whatsappService.getClientStatus(whatsappId)
+    // const status = await whatsappService.getClientStatus(whatsappId)
 
-    if (!status) {
-        return next(createError('الواتس غير فعال بالفعل', 404, FAILED))
-    }
+    // if (!status) {
+    //     return next(createError('الواتس غير فعال بالفعل', 404, FAILED))
+    // }
     await whatsappService.cleanup(whatsappId, isLogout)
     res.status(200).json({ status: SUCCESS, message: isLogout ? 'تم تسجيل الخروج من واتس اب و اصبح غير فعال' : "واتس اب غير فعال" })
 })
@@ -99,7 +99,7 @@ const sendWhatsMsgFc = (phone, message) => {
     })
 }
 
-const sendWhatsFileFc = async (phone, filePath, isBytes = false, fileName = 'report.pdf') => {
+const sendWhatsFileFc = async (phone, filePath, isBytes = false, fileName = 'report.pdf', whatsVar) => {
     return new Promise(async (resolve, reject) => {
         try {
             // let media
@@ -110,7 +110,7 @@ const sendWhatsFileFc = async (phone, filePath, isBytes = false, fileName = 'rep
             //     media = MessageMedia.fromFilePath(filePath);
             // }
             // const result = await whatsappService.sendMessage(whatsappId, phone, media);
-            const result = await whatsappService.sendFile(whatsappId, phone, filePath,fileName );
+            const result = await whatsappService.sendFile(whatsappId, phone, filePath, fileName, whatsVar);
             resolve(true)
         } catch (error) {
             console.log('error from sendWhatsFile', error)
