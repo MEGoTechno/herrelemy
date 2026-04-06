@@ -86,6 +86,7 @@ const CreateCodePage = lazy(() => import("../pages/admin/CreateCodePage"))
 const UnitsPage = lazy(() => import("../pages/user/UnitsPage"))
 const CoursePage = lazy(() => import("../pages/user/CoursePage"))
 const LecturePage = lazy(() => import("../pages/user/LecturePage"))
+import CommercialUsers from "../pages/admin/CommercialUsers.jsx";
 
 const LectureIcon = () => {
     return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 17a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H9.46c.35.61.54 1.3.54 2h10v11h-9v2m4-10v2H9v13H7v-6H5v6H3v-8H1.5V9a2 2 0 0 1 2-2zM8 4a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2a2 2 0 0 1 2 2" /></svg>
@@ -215,6 +216,14 @@ const otherLinks = [
     {
         index: true, element: <HomePage />,
 
+    }, {
+        path: '/commercial', element: <ProtectedRoute allowedTo={[user_roles.ADMIN, user_roles.SUBADMIN]}>
+            <CommercialUsers />
+        </ProtectedRoute>
+    }, {
+        path: '/errors', element: <ProtectedRoute allowedTo={[user_roles.ADMIN, user_roles.SUBADMIN]}>
+            <ErrorsPage />
+        </ProtectedRoute>
     }, {
         path: '/grades', element: <GradesPage />
     }, {
