@@ -9,6 +9,7 @@ import SEOHelmetAsync from '../tools/SEOHelmetAsync'
 import LatestCourses from '../components/home/LatestCourses'
 import AboutUS from '../components/home/AboutUS'
 import { lang } from '../settings/constants/arlang'
+import RevisionPoster from '../components/home/RevisionPoster'
 
 function HomePage() {
 
@@ -34,9 +35,10 @@ function HomePage() {
             />
 
             <Hero />
-            <Services />
+            <RevisionPoster />
             <LatestCourses />
             <Grades />
+            <Services />
             <AboutUS />
         </div>
     )
