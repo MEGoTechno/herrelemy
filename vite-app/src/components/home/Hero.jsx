@@ -15,7 +15,7 @@ import { lang } from '../../settings/constants/arlang'
 import React from 'react'
 // import TextToggler from '../animations/textToggler/TextToggler'
 
-function Hero() {
+function Hero({img = "/assets/hero.webp"}) {
     const theme = useTheme()
 
     return (
@@ -113,7 +113,7 @@ function Hero() {
                 <FlexColumn>
                     <Box
                         component="img"
-                        src="/assets/hero.webp"
+                        src={img}
                         alt="logo"
                         sx={{
                             width: "100%",

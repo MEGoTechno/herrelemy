@@ -11,6 +11,9 @@ import AboutUS from '../components/home/AboutUS'
 import { lang } from '../settings/constants/arlang'
 import RevisionPoster from '../components/home/RevisionPoster'
 
+
+const imgs = ["/assets/hero.webp",'/assets/test3.png', '/assets/test2.png', '/assets/test1.png']
+
 function HomePage() {
 
     const user = useSelector(s => s.global.user)
@@ -33,8 +36,9 @@ function HomePage() {
                 url={window.location.href}
                 isSiteLink
             />
-
-            <Hero />
+            {imgs.map((img, i) => (
+                <Hero key={i} img={img} />
+            ))}
             <RevisionPoster />
             <LatestCourses />
             <Grades />
