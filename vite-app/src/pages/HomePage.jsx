@@ -12,7 +12,7 @@ import { lang } from '../settings/constants/arlang'
 import RevisionPoster from '../components/home/RevisionPoster'
 
 
-const imgs = ["/assets/hero.webp",'/assets/test4.png','/assets/test3.png', '/assets/test2.png', '/assets/test1.png']
+const imgs = ["/assets/test5.png","/assets/hero.webp",'/assets/test4.png','/assets/test3.png', '/assets/test2.png', '/assets/test1.png']
 
 function HomePage() {
 
