@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 function RevisionPoster() {
     return (
-        <Section>
+        <Section sx={{py: 0}}>
             <Paper elevation={6} sx={{
                 display: 'flex', flexWrap: 'wrap',
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 2,

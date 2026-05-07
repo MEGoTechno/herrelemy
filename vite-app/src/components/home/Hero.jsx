@@ -19,7 +19,7 @@ function Hero({img = "/assets/hero.webp"}) {
     const theme = useTheme()
 
     return (
-        <Section sx={{ position: " relative", minHeight: '86vh', display: 'flex', justifyContent: 'center' }}>
+        <Section sx={{ position: " relative", minHeight: '86vh', display: 'flex', justifyContent: 'center', paddingBottom: '0 !important' }}>
 
             <FlexRow justifyContent={'space-around'} width={'100%'} >
                 {/* content */}
