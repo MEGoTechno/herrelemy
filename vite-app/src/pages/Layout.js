@@ -44,7 +44,7 @@ function Layout() {
             </Suspense>
             <FooterPage />
             <GlobalMsg />
-            <IconButton onClick={() => window.location.href = "https://api.whatsapp.com/send?phone=" + lang.Contact_Whatsapp + "&text=from Herr elemy"} sx={{ position: 'fixed', bottom: '5%', right: '16px' }}>
+            <IconButton onClick={() => window.location.href = "https://api.whatsapp.com/send?phone=" + lang.Contact_Whatsapp + "&text=from Herr elemy"} sx={{ position: 'fixed', bottom: '5%', right: '16px',zIndex: 5 }}>
                 <img src='/assets/whatsapp.svg' style={{ width: '50px', height: '50px' }} />
             </IconButton>
         </Box >
