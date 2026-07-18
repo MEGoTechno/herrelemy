@@ -1,11 +1,9 @@
-import React from 'react'
 import './home.css'
 import Section from '../../style/mui/styled/Section'
 import Grid from '../../style/vanilla/Grid'
 import { Box, Typography } from '@mui/material'
-import Battery from '../animations/battery/Battery'
-import { FlexBetween, FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox'
-import Image from '../ui/Image'
+import { FlexColumn } from '../../style/mui/styled/Flexbox'
+
 import TitleWithDividers from '../ui/TitleWithDividers'
 
 
@@ -13,25 +11,26 @@ function Services() {
     const sers = [
 
         {
-            img: './assets/report.svg',
-            title: 'متابعة دورية', subTitle: 'هنتابع كل مشاكلك ونجاوب على كل اسئلتك ونتابع مستواك عشان نضمن ليك التفوق'
-        },
-        {
-            img: './assets/honor.svg',
-            title: 'مستواك',
-            subTitle: 'هندربك بشكل يخليك مرتاح فى مادة اللغة الألمانية بإمتحانات وتدريبات الكترونية بتصحيح تلقائي.'
-        },
-        {
+            // img: './assets/report.svg',
             img: './assets/online-class.svg',
-            title: 'فيديوهات مسجله',
-            subTitle: "شرح بسيط ومتميز على اعلى مستوى مع أمثلة عشان تفهم كل حاجة"
+            title: 'شرح يخليك تقول', subTitle: 'هو الالماني كان سهل كدا !'
+        },
+        {
+            img: './assets/exercise.svg',
+            title: 'تدريب يخليك تقول',
+            subTitle: 'انا جاهز لاي سؤال!'
+        },
+        {
+            img: './assets/followup.svg',
+            title: 'متابعه تعرفك',
+            subTitle: "انك مش لواحدك !"
         }
     ]
 
     return (
         <Section>
             <FlexColumn gap={'16px'}>
-                <TitleWithDividers title={'الطريق للألماني يبدا مع دويتش أبو غالية'}
+                <TitleWithDividers title='اي اللي يخليك تكمل معانا ؟؟' desc={'الطريق للألماني يبدا مع دويتش أبو غالية'}
                     sx={{ fontSize: '1.9rem' }}
                     icon={<img style={{ maxWidth: '80px' }} src='./assets/space.svg' />} />
 
@@ -46,15 +45,15 @@ function Services() {
                     borderRadius: '16px',
                     width: '100%', p: '26px 16px'
                 }}>
-                    <Grid min='200px'>
+                    <Grid>
                         {sers.map(service => {
-                            return <FlexColumn key={service.img} gap={'16px'} sx={{ p: '12px 16px', bgcolor: 'background.alt', borderRadius: '16px', maxWidth: '450px', textAlign: "center" }}>
+                            return <FlexColumn key={service.img} gap={'16px'} sx={{ p: '12px 16px', bgcolor: 'background.alt', borderRadius: '16px', maxWidth: '450px', textAlign: "center", width: "100%" }}>
                                 <img style={{ maxWidth: '180px' }}
                                     src={service.img} />
-                                <Typography variant='h5' sx={{
-                                    color: 'primary.main', fontSize: '32px'
+                                <Typography variant='h5' fontWeight={800} sx={{
+                                    color: 'primary.main'
                                 }}>{service.title} </Typography>
-                                <Typography variant='subtitle1' >{service.subTitle}</Typography>
+                                <Typography variant='subtitle' >{service.subTitle}</Typography>
                             </FlexColumn>
                         })}
                     </Grid>

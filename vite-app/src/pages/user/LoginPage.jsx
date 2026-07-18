@@ -47,7 +47,7 @@ function LoginPage() {
             <FlexRow height={'100%'} justifyContent={'space-evenly'}>
 
                 {/* banner */}
-                <BannerAuth title={lang.LOGIN_ENTRY} img={'./assets/bg.webp'} />
+                <BannerAuth title={lang.LOGIN_ENTRY} img={'./assets/polygon1.jpg'} />
                 {/* https://herrelemy.com/images/bg.webp */}
 
                 {/* Login form */}

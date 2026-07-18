@@ -10,6 +10,7 @@ import LatestCourses from '../components/home/LatestCourses'
 import AboutUS from '../components/home/AboutUS'
 import { lang } from '../settings/constants/arlang'
 import RevisionPoster from '../components/home/RevisionPoster'
+import ChooseUs from '../components/home/ChooseUs'
 
 
 const imgs = ["/assets/test6.webp"]
@@ -39,8 +40,9 @@ function HomePage() {
             {imgs.map((img, i) => (
                 <Hero key={i} img={img} />
             ))}
-            <RevisionPoster />
+            <ChooseUs />
             <LatestCourses />
+            <RevisionPoster />
             <Grades />
             <Services />
             <AboutUS />
