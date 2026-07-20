@@ -12,27 +12,33 @@ function Services() {
 
         {
             // img: './assets/report.svg',
-            img: './assets/online-class.svg',
-            title: 'شرح يخليك تقول', subTitle: 'هو الالماني كان سهل كدا !'
+            img: './assets/vids.webp',
+            // img: './assets/online-class.svg',
+            title: 'شرح يخليك تقول ✨', subTitle: 'هو الالماني كان سهل كدا !'
         },
         {
-            img: './assets/exercise.svg',
-            title: 'تدريب يخليك تقول',
+            img: './assets/learning.webp',
+            title: 'تدريب يخليك تقول 🎯',
             subTitle: 'انا جاهز لاي سؤال!'
         },
         {
-            img: './assets/followup.svg',
-            title: 'متابعه تعرفك',
+            img: './assets/follow-up.webp',
+            title: 'متابعه تعرفك 📌',
             subTitle: "انك مش لواحدك !"
-        }
+        },        {
+            img: './assets/trophy1.webp',
+            title: 'والنتيجه اي! ❤',
+            subTitle: "نتيجه تفرحك وتفرح اهلك "
+        },
     ]
 
     return (
         <Section>
             <FlexColumn gap={'16px'}>
-                <TitleWithDividers title='اي اللي يخليك تكمل معانا ؟؟' desc={'الطريق للألماني يبدا مع دويتش أبو غالية'}
-                    sx={{ fontSize: '1.9rem' }}
-                    icon={<img style={{ maxWidth: '80px' }} src='./assets/space.svg' />} />
+                <TitleWithDividers title='اي مميزات منصتنا ولي تشترك معانا؟؟' desc={<Typography component={'span'} variant='subtitle1'>(علشان) إحنا مش بنشرح ألماني: إحنا بنغير النتيجة!</Typography>}
+                    sx={{ fontSize: { xs: '1.9rem', md: '2.5rem' }, color: 'grey.0' }}
+                    bgcolor='primary.light'
+                    icon={<img style={{ width: '60px' }} alt='fernsehturm-berlin' src='./assets/beriln.svg' />} />
 
                 <Box sx={{
                     background: `linear-gradient(rgba(241, 199, 49, 0.5), 
@@ -45,15 +51,15 @@ function Services() {
                     borderRadius: '16px',
                     width: '100%', p: '26px 16px'
                 }}>
-                    <Grid>
+                    <Grid maxCols={2}>
                         {sers.map(service => {
-                            return <FlexColumn key={service.img} gap={'16px'} sx={{ p: '12px 16px', bgcolor: 'background.alt', borderRadius: '16px', maxWidth: '450px', textAlign: "center", width: "100%" }}>
-                                <img style={{ maxWidth: '180px' }}
+                            return <FlexColumn key={service.img} gap={'16px'} sx={{ p: '12px 16px', bgcolor: 'background.alt', borderRadius: '16px', textAlign: "center", width: "100%" }}>
+                                <img style={{ maxWidth: '210px' }}
                                     src={service.img} />
                                 <Typography variant='h5' fontWeight={800} sx={{
-                                    color: 'primary.main'
+                                    color: 'secondary.main'
                                 }}>{service.title} </Typography>
-                                <Typography variant='subtitle' >{service.subTitle}</Typography>
+                                <Typography variant='body1' fontSize={'.99rem'} fontWeight={800} >{service.subTitle}</Typography>
                             </FlexColumn>
                         })}
                     </Grid>

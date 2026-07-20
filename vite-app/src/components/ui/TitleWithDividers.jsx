@@ -2,7 +2,7 @@ import { Avatar, Box, Divider, Typography } from '@mui/material'
 import { FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox'
 
 const defaultIcon = <img src='/assets/home.svg' style={{ maxWidth: '45px' }} />
-function TitleWithDividers({ title, desc = '', descVar = 'body1', color, variant = 'h5', avatar = '', icon = defaultIcon, sx = {}, children }) {
+function TitleWithDividers({ title, desc = '', descVar = 'body1', color, variant = 'h5', avatar = '', icon = defaultIcon, sx = {}, children, bgcolor = 'orange' }) {
 
     return (
         <FlexColumn sx={{
@@ -16,7 +16,7 @@ function TitleWithDividers({ title, desc = '', descVar = 'body1', color, variant
                 // backgroundColor: 'transparent', color: "neutral.0",
                 p: '6px 12px',
                 borderRadius: '6px', transition: '.3s all ease',
-                bgcolor: 'orange',
+                bgcolor,
                 '&:before, &:after': {
                     content: "''",
                     position: 'absolute',

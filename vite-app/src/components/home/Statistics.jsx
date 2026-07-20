@@ -11,9 +11,9 @@ const BORDER_SOFT = 'rgba(242,180,65,0.14)';
 
 const DEFAULT_STATS = [
     { label: 'عدد المشاهدات', note: 'اكثر من 1.5 مليون مشاهده علي يوتيوب', target: 1.5, decimals: 1, suffix: 'M', Icon: VisibilityOutlinedIcon },
-    { label: 'عدد ساعات المشاهده', note: 'اكثر من 45 الف ساعه مشاهده على يوتيوب', target: 45, decimals: 0, suffix: 'K', Icon: AccessTimeOutlinedIcon },
-    { label: 'عدد الطلاب', note: 'بفضل الله طلابنا اكثر من 50 الف ومستمرين', target: 50, decimals: 0, suffix: 'K+', Icon: PiStudent },
-    { label: 'عدد السنوات', note: 'خبره اكثر من 15 سنه فى تدريس الالماني لجميع السنوات و المراحل', target: 15, decimals: 0, suffix: '+', Icon: SchoolOutlinedIcon },
+    { label: 'عدد ساعات المشاهده', note: 'اكثر من 50 الف ساعه مشاهده على يوتيوب', target: 50, decimals: 0, suffix: 'K', Icon: AccessTimeOutlinedIcon },
+    { label: 'عدد الطلاب', note: 'بفضل الله طلابنا اكثر من 15 الف ومستمرين', target: 15, decimals: 0, suffix: 'K+', Icon: PiStudent },
+    { label: 'عدد السنوات', note: 'خبره اكثر من 8 سنه فى تدريس الالماني لجميع السنوات و المراحل', target: 8, decimals: 0, suffix: '+', Icon: SchoolOutlinedIcon },
     // { label: 'Countries', note: 'reached so far', target: 90, decimals: 0, suffix: '+', Icon: PublicOutlinedIcon },
 ];
 

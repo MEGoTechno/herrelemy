@@ -29,7 +29,7 @@ const palette = {
 const TICKER_ITEMS = [
   { Icon: PeopleAltOutlined, text: "1,500,000 مليون ونص مشاهده علي يوتيوب", color: 'primary' },
   { Icon: MenuBookOutlined, text: "اكثر من 50 الف ساعه مشاهده", color: 'secondary' },
-  { Icon: StarOutlineRounded, text: "اكثر من 50 الف طالب مع الهير عليمي", color: 'success' },
+  { Icon: StarOutlineRounded, text: "اكثر من 15 الف طالب مع الهير عليمي", color: 'success' },
   //   { Icon: SensorsRounded, text: "Live Q&A tonight at 8:00 PM" },
   //   { Icon: AutoAwesomeOutlined, text: "3 new tutors joined this week" },
 ];
@@ -155,7 +155,7 @@ function Hero() {
                   borderColor: 'orange', width: '100%'
                 }
 
-              }}> السنوات الدراسيه</ScallyBtn>
+              }}>السنوات الدراسيه</ScallyBtn>
             <Box display={'flex'} justifyContent={'space-around'} flexDirection={'row'} sx={{ minWidth: '250px', color: 'neutral.0' }}>
               {lang.Socials.map((social, i) => {
                 if (social.icon) return <React.Fragment key={i}>

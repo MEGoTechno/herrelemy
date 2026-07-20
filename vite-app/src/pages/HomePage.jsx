@@ -43,8 +43,8 @@ function HomePage() {
             <ChooseUs />
             <LatestCourses />
             <RevisionPoster />
-            <Grades />
             <Services />
+            <Grades />
             <AboutUS />
         </div>
     )
