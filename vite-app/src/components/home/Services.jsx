@@ -24,7 +24,7 @@ function Services() {
         {
             img: './assets/follow-up.webp',
             title: 'متابعه تعرفك 📌',
-            subTitle: "انك مش لواحدك !"
+            subTitle: "انك مش لواحدك, دعم حقيقي فى كل مرحله من رحلتك !"
         },        {
             img: './assets/trophy1.webp',
             title: 'والنتيجه اي! ❤',
