@@ -9,7 +9,7 @@ import useGrades from '../../hooks/useGrades';
 
 function Grades() {
     const theme = useTheme()
-    const { grades } = useGrades()
+    const { grades } = useGrades({ sortkey: 'order', sortValue: 1 })
 
     return (
         <Section>
