@@ -4,13 +4,12 @@ import { getFullDate } from "../../settings/constants/dateConstants"
 
 import { useLazyGetCoursesQuery } from "../../toolkit/apis/coursesApi"
 import FullComponent from "../../tools/datagrid/FullComponent"
-import { handelObjsOfArr } from "../../tools/fcs/MakeArray"
+import { makeArrWithValueAndLabel } from "../../tools/fcs/MakeArray"
 import TabInfo from "../ui/TabInfo"
 import UserAvatar from "../users/UserAvatar"
 
-function Courses({ filters, viewFc, updateFc, deleteFc, massActions, reset,selections,addColumns }) {
-
-    const {grades} = useGrades()
+function Courses({ filters, viewFc, updateFc, deleteFc, massActions, reset, selections, addColumns, setSelection }) {
+    const { grades } = useGrades()
 
     const columns = [
         {
@@ -27,7 +26,7 @@ function Courses({ filters, viewFc, updateFc, deleteFc, massActions, reset,selec
         },
         {
             field: 'name',
-            headerName: lang.NAME,
+            headerName: 'اسم الكورس',
             width: 200,
         }, {
             field: 'isActive',
@@ -39,8 +38,8 @@ function Courses({ filters, viewFc, updateFc, deleteFc, massActions, reset,selec
             headerName: lang.GRADE,
             type: 'singleSelect',
             width: 200,
-            valueOptions: handelObjsOfArr(grades, { value: 'index', label: 'name' }),
-        },  {
+            valueOptions: makeArrWithValueAndLabel(grades, { value: 'index', label: 'name' }),
+        }, {
             field: 'createdAt',
             headerName: 'تاريخ الانشاء',
             width: 200,
@@ -59,8 +58,8 @@ function Courses({ filters, viewFc, updateFc, deleteFc, massActions, reset,selec
                 resKey: 'courses',
                 fetchFilters: filters,
                 viewFc, deleteFc, updateFc,
-                columns, massActions,selections,
-                reset,addColumns
+                columns, massActions, selections, setSelection,
+                reset, addColumns
             }} />
         </div>
     )

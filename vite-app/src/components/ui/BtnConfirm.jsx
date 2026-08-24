@@ -1,29 +1,59 @@
-import React, { useState } from "react"
-import ModalStyled from "../../style/mui/styled/ModalStyled"
+import { useEffect, useState } from 'react'
 
-function BtnConfirm({ btn, children, modalInfo = {} }) {
+import ModalStyled from '../../style/mui/styled/ModalStyled'
+import { Box, Button } from '@mui/material'
+import Section from '../../style/mui/styled/Section'
+import { FlexColumn } from '../../style/mui/styled/Flexbox'
+import { FilledHoverBtn } from '../../style/buttonsStyles'
+import TitleWithDividers from './TitleWithDividers'
+
+function BtnModal({
+    parenetSx = {}, btn,
+    btnName, icon, children, component, variant = 'contained', color, size = 'small', isFilledHover = false, fullWidth = true, fullScreen = false, titleInSection = false,
+    close = false, onClose = false, disabled = false
+
+}) {
     const [open, setOpen] = useState(false)
-    const [confirmedAction, setConfirmedAction] = useState(() => () => { });
+    useEffect(() => {
+        setOpen(false)
+    }, [close])
 
-    const handleBtnClick = (e) => {
-        e.stopPropagation();
-        // Save the original onClick from the button to run after confirmation
-        if (btn.props?.onClick) {
-            setConfirmedAction(() => () => btn.props.onClick(e));
+    useEffect(() => {
+        if (!open && onClose) {
+            onClose(r => !r)
         }
-        setOpen(true);
-    };
-
-    const clonedBtn = React.cloneElement(btn || children, {
-        onClick: handleBtnClick
-    });
+    }, [open])
 
     return (
-        <div>
-            {clonedBtn}
-            <ModalStyled action={confirmedAction} open={open} setOpen={setOpen} title={modalInfo.title} desc={modalInfo.desc} />
-        </div>
+        <FlexColumn sx={parenetSx}>
+            {btn ?
+                <Box onClick={() => {
+                    if (!disabled) {
+                        setOpen(true)
+                    }
+                }}>
+                    {btn}
+                </Box> : isFilledHover ?
+                    <FilledHoverBtn disabled={disabled} endIcon={icon} size={size} onClick={() => setOpen(true)} colorm={color}>
+                        {btnName}
+                    </FilledHoverBtn>
+                    :
+                    <Button disabled={disabled} variant={variant} endIcon={icon} size={size} onClick={() => setOpen(true)} color={color}>
+                        {btnName}
+                    </Button>
+            }
+
+            <ModalStyled open={open} setOpen={setOpen} fullWidth={fullWidth} fullScreen={fullScreen}>
+                <Section>
+                    {titleInSection && (
+                        <TitleWithDividers title={titleInSection} />
+                    )}
+                    {component}
+                    {children}
+                </Section>
+            </ModalStyled>
+        </FlexColumn >
     )
 }
 
-export default BtnConfirm
+export default BtnModal

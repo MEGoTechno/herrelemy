@@ -55,8 +55,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }))
-app.use(bodyParser.json({limit: '3mb'}))
-app.use(bodyParser.urlencoded({ extended: true ,limit: '3mb'}))
+app.use(bodyParser.json({ limit: '3mb' }))
+app.use(bodyParser.urlencoded({ extended: true, limit: '3mb' }))
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(device.capture());
@@ -116,7 +116,7 @@ app.use('/storage', express.static(path.join(__dirname, 'storage')))
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'development') return next()
     // const excludedRoutes = ['/', '/payment/callback', '/payment/webhook'];
-    const excludedPrefixes = ['/api/invoices/webhook']
+    const excludedPrefixes = ["/api/invoices/webhook", '/api/facebook', '/api/messenger']; //webhook
 
     // If current route is excluded, skip the check
     if (excludedPrefixes.some(prefix => req.path.startsWith(prefix))) {

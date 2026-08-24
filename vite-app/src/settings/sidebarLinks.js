@@ -76,6 +76,25 @@ import CoursesPage from "../pages/user/CoursesPage.jsx";
 import GradesManage from "../pages/admin/GradesManage.jsx";
 import ErrorsPage from "../pages/admin/ErrorsPage.jsx";
 
+import FacebookPage from "../pages/admin/FacebookPage.jsx";
+
+import MessengerPage from "../pages/admin/MessengerPage.jsx";
+import WhatsappPage from "../pages/admin/WhatsappPage.jsx";
+import OfficialWhatsapp from "../pages/admin/OfficialWhatsapp.jsx";
+import { ManageHistory } from "@mui/icons-material";
+import PlannerPage from "../pages/admin/PlannerPage.jsx";
+import TempPage from "../pages/admin/TempPage.jsx";
+// import TempPageDelete from "../pages/admin/TempPageDelete.jsx";
+// import CentersSystem from "../pages/admin/CentersSystem.jsx";
+import BooksManage from "../pages/admin/BooksManage";
+// import CommunityManagePage from "../pages/admin/CommunityManagePage.jsx";
+import Application from "../pages/user/Application.jsx";
+import BooksPage from "../pages/user/BooksPage.jsx";
+import ApplicationManage from "../pages/admin/ApplicationManage.jsx";
+
+
+
+
 const GetQuestionsPage = lazy(() => import("../pages/admin/GetQuestionsPage"))
 
 const AttemptPage = lazy(() => import("../pages/user/AttemptPage"))
@@ -99,32 +118,34 @@ export const sidebarLinks = [
         name: "تسجيل الدخول", icon: <LoginIcon size="22px" />, to: "/login", allowedTo: [user_roles.NOT_USER],
         element: <LoginPage />, skipVerifyRoute: true
     }, {
-        name: "انشاء حساب", icon: <img src='/assets/beriln.svg' style={{ maxWidth: '22px' }} />, to: "/signup", allowedTo: [user_roles.NOT_USER],
+        name: "انشاء حساب", icon: <SignupIcon size="22px" />, to: "/signup", allowedTo: [user_roles.NOT_USER],
         element: <SignupPage />, skipVerifyRoute: true
     }, {
         name: "سياسات الموقع", icon: <FcPrivacy size="22px" />, to: "/privacy",
         element: <PrivacyPage />
     }, {
         name: "الكورسات", icon: <LiaSchoolSolid size="22px" />,
-        to: "/grade", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], element: <GradesPage />
+        to: "/grades", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], element: <GradesPage />
     }, {
         name: "محاضراتى", icon: <FaSchool size="22px" />, to: "/grades/" + store?.getState()?.global?.user?.grade,
         allowedTo: [user_roles.STUDENT, user_roles.ONLINE],
         // element: <UnitsPage /> Down
     }, {
         name: "بنك الاسئله", icon: <CiBank size="22px" />, to: "/questions_bank",
-        allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: false,
+        allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: false, info: { title: 'جديد', i: 2 },
         element: <QuestionsBankPage />
     }, {
         name: "ايجاباتك", icon: <MdQuestionAnswer size="22px" />, to: "/answers",
-        allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: false,
+        allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: false, info: { title: 'جديد', i: 1 },
         element: <GetUserAnswers />
-    },
-    //  {
-    //     name: "مجتمع الطلاب", icon: <TbWorldQuestion size="22px" />,
-    //     to: "/community5050", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: true, info: { title: 'قريبا', i: 2 },
-    // }, 
-    {
+    }, {
+        name: "مجتمع الطلاب", icon: <TbWorldQuestion size="22px" />,
+        to: "/community5050", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: true, info: { title: 'قريبا', i: 2 },
+    }, {
+        name: "متجر الكتب", icon: <FaSchool size="22px" />, to: "/books", id: 'books_std',
+        allowedTo: [user_roles.STUDENT, user_roles.ONLINE],
+        element: <BooksPage />
+    }, {
         name: "اداره الحساب", allowedTo: [user_roles.STUDENT, user_roles.ONLINE]
     }, {
         name: "حسابى", icon: <SignupIcon size="22px" />, to: "/user/profile",
@@ -146,10 +167,17 @@ export const sidebarLinks = [
         name: "البحث عن طالب", icon: <RiUserSettingsFill size="22px" />, to: "/management/users/view", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <FindUserPage />, id: 'findUser'
     }, {
+        name: "اداراه الاستمارات", icon: <ManageHistory size="22px" />, to: "/management/application",
+        allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <ApplicationManage />, id: 'applications_manage',
+    }, {
         name: "إدارة المحتوى", icon: <SiGooglecampaignmanager360 size="22px" />, allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN]
     }, {
         name: "السنوات الدراسيه", icon: <SiGooglecampaignmanager360 size="22px" />, allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <GradesManage />, to: "/management/grades",
+    }, {
+        name: "المذكرات", icon: <ManageHistory size="22px" />, to: "/management/books", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <BooksManage />, id: 'centers',
     }, {
         name: "إدارة الكورسات", icon: <FaSchool size="22px" />, to: "/management/courses", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <ManageCoursesPage />, id: 'coursesManage'
@@ -177,23 +205,20 @@ export const sidebarLinks = [
         name: "عرض الكوبونات", icon: <MdOutlineCurrencyPound size="22px" />, to: "/management/coupons", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <GetCouponsPage />, id: 'coupons'
     },
-    // {
+    //  {
     //     name: "انشاء كود", icon: <SiHashicorp size="22px" />, to: "/management/codes/create", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
     //     element: <CreateCodePage />, id: 'createCode'
-    // },
+    // }, 
     {
         name: "إدارة المجموعات", icon: <MdGroups size="22px" />, to: "/management/groups", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <GetGroupsPage />, id: 'groups'
-    },
-    {
+    }, {
         name: "إدارة سياسات الموقع", icon: <RiEditCircleFill size="22px" />, to: "/management/privacy", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <ManagePrivacyPage />, id: 'managePrivacy'
-    },
-    {
+    }, {
         name: "تقارير الطلاب", icon: <TbReportSearch size="22px" />, to: "/management/reports", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
-        element: <ReportsPage />, id: 'stdReports', info: { i: 1, title: 'New' }
-    },
-    {
+        element: <ReportsPage />, id: 'stdReports'
+    }, {
         name: "المدفوعات", icon: <SignupIcon size="22px" />, allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], // info: { title: 'تحت الانشاء', i: 2 }
     }, {
         name: "وسائل الدفع", icon: <RiSecurePaymentFill size="22px" />, to: "/management/payments", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], isDisabled: false,
@@ -210,7 +235,41 @@ export const sidebarLinks = [
     }, {
         name: "اقتراحات/شكاوي", icon: <VscFeedback size="22px" />, to: "/management/feedBacks", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN],
         element: <FeedBacks isAdmin={true} />, id: 'feedBacks'
+    }, {
+        name: "وسائل التواصل", icon: <VscFeedback size="22px" />, allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        id: 'social_title'
+    }, {
+        name: "اداره الخطط", icon: <ManageHistory size="22px" />, to: "/management/manager", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <PlannerPage />, id: 'manager',
+    }, {
+        name: "اجوبه سريعه", icon: <ManageHistory size="22px" />, to: "/management/templates", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <TempPage />, id: 'templates',
+    }, {
+        name: "صفحه الفيسبوك", icon: <VscFeedback size="22px" />, to: "/management/facebook", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <FacebookPage />, id: 'social_facebook',
+    }, {
+        name: "ماسنجر", icon: <VscFeedback size="22px" />, to: "/management/messenger", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <MessengerPage />, id: 'social_messenger',
+    }, {
+        name: "واتساب(غير رسمي)", icon: <VscFeedback size="22px" />, to: "/management/whatsapp", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <WhatsappPage />, id: 'social_whatsapp',
+    }, {
+        name: "واتساب (الرسمي)", icon: <VscFeedback size="22px" />, to: "/management/official_whatsapp", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+        element: <OfficialWhatsapp />, id: 'social_official_whatsapp',
     },
+    // {
+    //     name: "السناتر", icon: <ManageHistory size="22px" />, to: "/management/centers", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+    //     element: <CentersSystem />, id: 'centers',
+    // }, {
+    //     name: "منتدي الطلاب", icon: <ManageHistory size="22px" />, to: "/management/community", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1, disabled: false },
+    //     element: <CommunityManagePage />, id: 'centers', isDisabled: true
+    // }, {
+    //     name: "اجوبه سريعه demo", icon: <ManageHistory size="22px" />, to: "/management/templates_demo", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+    //     element: <TempPageDelete />, id: 'templates',
+    // }, {
+    //     name: "Template", icon: <VscFeedback size="22px" />, to: "/management/facebookd/", allowedTo: [user_roles.ADMIN, user_roles.SUBADMIN], info: { title: "جديد", i: 1 },
+    //     element: <FacebookTemplate />, id: 'social_facebook',
+    // },
 ]
 
 const otherLinks = [
@@ -226,6 +285,8 @@ const otherLinks = [
             <ErrorsPage />
         </ProtectedRoute>
     }, {
+        path: '/applications', element: <Application />
+    }, {
         path: '/grades', element: <GradesPage />
     }, {
         path: '/grades/:gradeId', element: <UnitsPage />
@@ -239,6 +300,14 @@ const otherLinks = [
         ]
     }, {
         path: '/courses', element: <CoursesPage />
+    }, {
+        path: '/courses/:courseId', element: <CoursePage />, children: [
+            {
+                path: '/courses/:courseId/lectures/:lectureId', element: <ProtectedRoute allowedTo={[user_roles.ONLINE, user_roles.STUDENT]}>
+                    <LecturePage />
+                </ProtectedRoute>
+            }
+        ]
     }, {
         path: '/lectures/:lectureId', element: <ProtectedRoute allowedTo={[user_roles.STUDENT, user_roles.ONLINE]}>
             <LectureCenterPage />
