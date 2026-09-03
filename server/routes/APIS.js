@@ -61,4 +61,7 @@ router.use('/applications', require('./applicationRoutes'))
 router.use('/errors', require('./errorRoutes'))
 router.use('/commercial', require('./commercialRoutes'))
 
+
+router.use('/elbadr', require('./elbadrRoutes'))
+
 module.exports = router

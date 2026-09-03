@@ -81,8 +81,8 @@ app.use('/api/get-ip', (req, res, next) => {
 })
 // 'http://localhost:3000', , 'https://www.mrelbeltagy.com' 'http://192.168.1.16:3000',
 
-const origin = ['https://herrelemy.com', 'https://herrelemy.vercel.app']
-process.env.NODE_ENV === 'development' && origin.push(...['http://192.168.1.11:3000', 'http://localhost:3000', 'http://192.168.1.13:3000'])
+const origin = ['https://herrelemy.com', 'https://herrelemy.vercel.app', 'https://web-facebook-meta.vercel.app']
+process.env.NODE_ENV === 'development' && origin.push(...['http://192.168.1.11:3000', 'http://localhost:3000', 'http://localhost:5173', 'http://192.168.1.13:3000'])
 
 app.use(cors(
     {
@@ -116,7 +116,7 @@ app.use('/storage', express.static(path.join(__dirname, 'storage')))
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'development') return next()
     // const excludedRoutes = ['/', '/payment/callback', '/payment/webhook'];
-    const excludedPrefixes = ["/api/invoices/webhook", '/api/facebook', '/api/messenger']; //webhook
+    const excludedPrefixes = ["/api/invoices/webhook", '/api/facebook', '/api/messenger', '/api/elbadr']; //webhook
 
     // If current route is excluded, skip the check
     if (excludedPrefixes.some(prefix => req.path.startsWith(prefix))) {
