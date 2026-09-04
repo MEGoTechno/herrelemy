@@ -81,7 +81,7 @@ app.use('/api/get-ip', (req, res, next) => {
 })
 // 'http://localhost:3000', , 'https://www.mrelbeltagy.com' 'http://192.168.1.16:3000',
 
-const origin = ['https://herrelemy.com', 'https://herrelemy.vercel.app', 'https://web-facebook-meta.vercel.app', 'https://sigma-mfacebo-ok.vercel.app']
+const origin = ['https://herrelemy.com', 'https://herrelemy.vercel.app', 'https://web-facebook-meta.vercel.app', 'https://myface-bktech.vercel.app']
 process.env.NODE_ENV === 'development' && origin.push(...['http://192.168.1.11:3000', 'http://localhost:3000', 'http://localhost:5173', 'http://192.168.1.13:3000'])
 
 app.use(cors(
