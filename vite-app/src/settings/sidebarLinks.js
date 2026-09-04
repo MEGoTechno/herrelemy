@@ -143,7 +143,7 @@ export const sidebarLinks = [
         to: "/community5050", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: true, info: { title: 'قريبا', i: 2 },
     }, {
         name: "متجر الكتب", icon: <FaSchool size="22px" />, to: "/books", id: 'books_std',
-        allowedTo: [user_roles.STUDENT, user_roles.ONLINE],
+        // allowedTo: [user_roles.STUDENT, user_roles.ONLINE],
         element: <BooksPage />
     }, {
         name: "اداره الحساب", allowedTo: [user_roles.STUDENT, user_roles.ONLINE]
