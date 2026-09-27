@@ -133,7 +133,7 @@ function GetSubscriptionsNot({ grade }) {
             headerName: lang.GRADE,
             type: 'singleSelect',
             width: 200,
-            filterable: false,
+            filterable: true,
             valueOptions: makeArrWithValueAndLabel(grades, { value: 'index', label: 'name' }),
         }, {
             field: "addsubscribe",

@@ -41,7 +41,7 @@ function PaymentMethods({ coupon, price, handelResponse,
     const [couponName, setCouponName] = useState(coupon)
     useEffect(() => setCouponName(coupon), [coupon])
 
-    if (!data) return <> NO data</>
+    if (!data) return <> يتم التحميل ...!! </>
     const payments = handelObjsOfArr(data?.values?.payments, { value: '_id', label: 'name', image: 'file.url', description: 'description', type: 'type' })
     const activePayment = (data?.values?.payments || []).length > 0 ? data?.values?.payments?.find(p => p._id === chosenPayment) : null
 
