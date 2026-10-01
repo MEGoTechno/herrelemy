@@ -1,66 +1,51 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Section from '../../style/mui/styled/Section'
-import UserHeader from '../ui/UserHeader'
-import { useDispatch, useSelector } from 'react-redux'
-import { Alert, Avatar, Box, Button, Typography } from '@mui/material'
-import { useLazyGetCourseSubscriptionsQuery } from '../../toolkit/apis/userCoursesApi'
-import useLazyGetData from '../../hooks/useLazyGetData'
-import TitleSection from '../../components/ui/TitleSection'
-import UnitCourseDetails from '../../components/content/UnitCourseDetails'
-import AccordionStyled from '../../style/mui/styled/AccordionStyled'
+import { useSelector } from 'react-redux'
+import { Box, Button } from '@mui/material'
+
 import Grid from '../../style/vanilla/Grid'
-import LoaderWithText from '../../style/mui/loaders/LoaderWithText'
 import Separator from '../../components/ui/Separator'
 import { lang } from '../../settings/constants/arlang'
 
 import { user_roles } from '../../settings/constants/roles'
-import { useLazyIsLoggedQuery } from '../../toolkit/apis/usersApi'
-import { setUser } from '../../toolkit/globalSlice'
+
 import UserLectures from './UserLectures'
 import { CoursesIcon, VidsIcon2 } from '../ui/svg/ContentSvgs'
 import LatestCourses from './LatestCourses'
-import { FlexBetween, FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox'
+import { FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox'
 import AdminHome from './AdminHome'
-import InfoText from '../ui/InfoText'
-import { HashLink } from 'react-router-hash-link'
+
 import UserGroups from '../groups/UserGroups'
 import ProfileHero from '../users/ProfileHero'
 import TitleWithDividers from '../ui/TitleWithDividers'
-import CollapseStyled from '../../style/mui/styled/CollapseStyled'
 import SubscriptionsPage from '../../pages/user/SubscriptionsPage'
 
 function UserHome() {
 
     const { user } = useSelector(s => s.global)
+    // useEffect(() => {
+    //     const trigger = async () => {
+    //         const res = await getCourses({ user: user._id, populate: 'course' })
 
-    const [courses, setCourses] = useState([])
-    const [openUserCourses, setOpenCourses] = useState(false)
-    const [getData, status] = useLazyGetCourseSubscriptionsQuery()
-    const [getCourses] = useLazyGetData(getData)
+    //         setCourses(res.subscriptions)
+    //     }
+    //     if (openUserCourses && courses.length === 0) {
+    //         trigger()
+    //     }
+    // }, [openUserCourses])
 
-    useEffect(() => {
-        const trigger = async () => {
-            const res = await getCourses({ user: user._id, populate: 'course' })
+    // const dispatch = useDispatch()
+    // const [getUserData] = useLazyIsLoggedQuery()
 
-            setCourses(res.subscriptions)
-        }
-        if (openUserCourses && courses.length === 0) {
-            trigger()
-        }
-    }, [openUserCourses])
+    // useEffect(() => {
+    //     const checkIslogged = async () => {
+    //         const { data } = await getUserData({}, true)
+    //         const userData = data?.values
 
-    const dispatch = useDispatch()
-    const [getUserData] = useLazyIsLoggedQuery()
-
-    useEffect(() => {
-        const checkIslogged = async () => {
-            const { data } = await getUserData({}, true)
-            const userData = data?.values
-
-            dispatch(setUser({ ...user, ...userData }))
-        }
-        // checkIslogged()
-    }, [])
+    //         dispatch(setUser({ ...user, ...userData }))
+    //     }
+    //     // checkIslogged()
+    // }, [])
 
     const [activeCompo, setActiveCompo] = useState(0)
 

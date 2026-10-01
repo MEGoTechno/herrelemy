@@ -12,7 +12,7 @@ function SubscriptionsPage({ isTitle = true }) {
     const [getData, status] = useLazyGetCourseSubscriptionsQuery()
 
     const { data: courses } = usePaginate({
-        getData, key: 'subscriptions'
+        getData, key: 'subscriptions', params: { populate: 'course' }
     })
 
     return (
