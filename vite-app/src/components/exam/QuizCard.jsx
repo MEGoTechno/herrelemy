@@ -61,7 +61,6 @@ export default function QuizCard({ exam, submit, isLoading, navigateToAnswers, e
             user: user._id,
             exam: exam._id,
             answers,
-            createdAt: new Date()
         }
         if (time && (exam.isTime ?? true)) {
             attempt.tokenTime = time // *_* modify it
@@ -90,7 +89,7 @@ export default function QuizCard({ exam, submit, isLoading, navigateToAnswers, e
             <Card sx={{ bgcolor: theme.palette.background.alt, width: "100%" }} >
 
                 <ShowQuestion
-                    activeAttemptId={activeAttemptId} setActiveAttemptId={setActiveAttemptId} examId={exam._id} tokenTime={time} course={exam.courseId}
+                    activeAttemptId={activeAttemptId} setActiveAttemptId={setActiveAttemptId} examId={exam._id} tokenTime={exam.isTime && time} course={exam.courseId}
                     index={currentQuestionIndex}
                     question={currentQ} isLoading={isLoading} setQuestions={setQuestions} method={method} editUser={editUser} />
 
@@ -107,7 +106,8 @@ export default function QuizCard({ exam, submit, isLoading, navigateToAnswers, e
                         <Button sx={sendSuccess} disabled={isLoading} onClick={openModal}>
                             {isLoading ? <Loader color={'#fff'} /> : "ارسال"}
                         </Button>
-                    ) : method?.markQ ? 'قم بتصحيح جميع الاسئله من خلال زر تصحيح السؤال فى كل سؤال وعند ذلك ستكون قد سلمت التدريب' : <BankNavigateBtn exam={exam} navigateToAnswers={navigateToAnswers} questions={questions} submit={sendData} />}
+                    ) : method?.markQ ? 'قم بتصحيح جميع الاسئله من خلال زر تصحيح السؤال فى كل سؤال وعند ذلك ستكون قد سلمت التدريب تلقائيا!' : <BankNavigateBtn exam={exam} navigateToAnswers={navigateToAnswers} questions={questions} submit={sendData} />}
+
                 </CardActions>
 
                 <Box >

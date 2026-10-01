@@ -4,4 +4,4 @@ const arLang = {
   Mail: "herrelemy@gmail.com",
 };
 
-module.exports = { arLang };
+export { arLang };

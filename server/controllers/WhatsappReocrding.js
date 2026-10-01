@@ -1,10 +1,10 @@
-const expressAsyncHandler = require("express-async-handler");
-const ConversationModel = require("../models/ConversationMode")
-const NotificationModel = require("../models/NotificationModel")
-const UserModel = require("../models/UserModel")
+import expressAsyncHandler from 'express-async-handler';
+import ConversationModel from '../models/ConversationMode.js';
+import NotificationModel from '../models/NotificationModel.js';
+import UserModel from '../models/UserModel.js';
 
-const { senderConstants } = require("../tools/constants/sendersConstants");
-const { getAll, deleteOne, updateOne } = require("./factoryHandler");
+import { senderConstants } from '../tools/constants/sendersConstants.js';
+import { getAll, deleteOne, updateOne } from './factoryHandler.js';
 
 
 const conversationParams = (query) => {
@@ -93,16 +93,16 @@ const handleMeta = async (message) => {
     const messageId = meta.targetMessageId
 
     if (type === 'edit') {
-        console.log('edit ==>', messageId)
+        // console.log('edit ==>', messageId)
         await NotificationModel.updateOne({ messageId }, { edited: true })
     } else if (type === 'delete') {
-        console.log('delete ==>', messageId)
+        // console.log('delete ==>', messageId)
         await NotificationModel.updateOne({ messageId }, { deleted: true })
     } else if (type === 'status') {
-        console.log('status ==>', messageId)
+        // console.log('status ==>', messageId)
         await NotificationModel.updateOne({ messageId }, { isSeen: true })
     } else if (type === 'reaction') {
-        console.log('Reaction ==>', messageId, meta.removed)
+        // console.log('Reaction ==>', messageId, meta.removed)
         if (meta.removed) {
             await NotificationModel.updateOne(
                 { messageId },
@@ -175,7 +175,4 @@ const processIncomingMessage = async (payload) => {
     }
 };
 
-module.exports = {
-    createConversation, handleMeta, handleMessage, processIncomingMessage,
-    getConversations, markSeen, removeConversation, updateConversation
-}
+export { createConversation, handleMeta, handleMessage, processIncomingMessage, getConversations, markSeen, removeConversation, updateConversation };

@@ -77,6 +77,15 @@ function CourseUpdate({ course, setCourse, setCourses }) {
             column: 1, row: 4,
 
         }, {
+            name: 'isCommunity',
+            label: 'تفعيل المنتدي',
+            type: 'switch',
+            value: course.isCommunity ?? false,
+            icon: <VscSymbolBoolean />,
+            width: "100%",
+            column: 1, row: 5,
+
+        }, {
             name: 'isFixed',
             label: 'تثبيت الكورس',
             type: 'switch',
@@ -108,13 +117,37 @@ function CourseUpdate({ course, setCourse, setCourses }) {
             column: 1, row: 5,
 
         }, {
+            name: 'estimatedVideos',
+            label: 'عدد الفيديوهات المتوقعة',
+            type: 'number',
+            value: course.estimatedVideos ?? 0,
+            icon: <VscSymbolBoolean />,
+            width: "100%",
+            column: 1, row: 6,
+
+        }, {
+            name: 'estimatedFiles',
+            label: 'عدد الملفات المتوقعة',
+            type: 'number',
+            value: course.estimatedFiles ?? 0,
+            icon: <VscSymbolBoolean />,
+            width: "100%",
+            column: 1, row: 6,
+        }, {
+            name: 'estimatedExams',
+            label: 'عدد الامتحانات المتوقعة',
+            type: 'number',
+            value: course.estimatedExams ?? 0,
+            icon: <VscSymbolBoolean />,
+            width: "100%",
+            column: 1, row: 6,
+        }, {
             name: 'dateStart',
             label: 'تاريخ بدايه الكورس',
             type: 'fullDate',
             width: "100%",
             value: course.dateStart ? dayjs(course.dateStart) : null,
             column: 2, row: 2,
-
         }, {
             name: 'dateEnd',
             label: 'تاريخ نهايه الكورس',
