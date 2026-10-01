@@ -1,5 +1,5 @@
 import { SchoolRounded } from '@mui/icons-material';
-import { Avatar, Badge, Box, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Stack, Typography } from '@mui/material';
 import React from 'react'
 import UserHeader from '../ui/UserHeader';
 import { HashLink } from 'react-router-hash-link';
@@ -33,7 +33,8 @@ function ProfileHero({ user }) {
                 "&::after": { content: '""', position: "absolute", width: 160, height: 160, borderRadius: "50%", border: "25px solid rgba(255,255,255,.06)", right: "30%", top: -90 },
             }}
         >
-            <Stack direction="row" alignItems="center" spacing={2.75} sx={{ position: "relative", zIndex: 1 }}>
+            <Stack direction="row" alignItems="center" spacing={2.75}
+                sx={{ position: "relative", zIndex: 1, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
 
                 <FlexColumn >
                     <Avatar alt={user.name.toUpperCase()} src={user?.avatar?.url || "#"}
@@ -48,7 +49,7 @@ function ProfileHero({ user }) {
                             fontSize: '50px',
                             color: 'grey.0',
                             borderRadius: '16px',
-                            width: { xs: 78, sm: '200px' }, height: { xs: 78, sm: '200px' }, border: "2px solid rgba(255,255,255,.85)", boxShadow: "0 8px 25px rgba(0,0,0,.15)"
+                            width: { xs: 100, sm: '200px' }, height: { xs: 100, sm: '200px' }, border: "2px solid rgba(255,255,255,.85)", boxShadow: "0 8px 25px rgba(0,0,0,.15)"
                         }}
                     />
                     {(!user?.avatar?.url) && (
@@ -64,7 +65,7 @@ function ProfileHero({ user }) {
 
                 <Box>
                     <Typography variant="body2" sx={{ opacity: 0.85, mb: 0.5 }}>أهلاً بك من جديد 👋</Typography>
-                    <Typography component="h1" fontWeight={800} sx={{ fontSize: { xs: 22, sm: 30 }, mb: 1 }}>
+                    <Typography variant="h4" fontWeight={800} sx={{ mb: 1 }}>
                         {user.name}
                     </Typography>
                     <Stack direction="row" alignItems="center" spacing={0.9} sx={{ opacity: 0.95 }}>
