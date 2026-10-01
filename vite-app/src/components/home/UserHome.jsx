@@ -24,6 +24,10 @@ import AdminHome from './AdminHome'
 import InfoText from '../ui/InfoText'
 import { HashLink } from 'react-router-hash-link'
 import UserGroups from '../groups/UserGroups'
+import ProfileHero from '../users/ProfileHero'
+import TitleWithDividers from '../ui/TitleWithDividers'
+import CollapseStyled from '../../style/mui/styled/CollapseStyled'
+import SubscriptionsPage from '../../pages/user/SubscriptionsPage'
 
 function UserHome() {
 
@@ -70,22 +74,7 @@ function UserHome() {
     const compos = [
         {
             value: 0,
-            compo: <AccordionStyled title={'كورساتك'} bgcolor="background.alt" expanded={openUserCourses} setExpanded={setOpenCourses}>
-                {status.isLoading && (
-                    <LoaderWithText />
-                )}
-                {courses?.length === 0 && status.isSuccess && (
-                    <Alert variant='filled' severity='warning'> انت لم تشترك فى اى كورس بعد...!</Alert>
-                )}
-                <Grid>
-                    {courses && courses?.map(({ course, createdAt, updatedAt, currentIndex }, i) => <UnitCourseDetails key={i}
-                        course={course}
-                        subscribedAt={createdAt}
-                        lastLectureAt={updatedAt}
-                        currentIndex={currentIndex}
-                    />)}
-                </Grid>
-            </AccordionStyled>,
+            compo: <SubscriptionsPage isTitle={false} />
         },
         { compo: <UserLectures key={0} query={{ codes: true, paid: true }} accordionTitle={'محاضراتك' + ' ' + '(تم شراءها' + " || " + "اكواد)"} />, value: 1 },
         // {
@@ -118,7 +107,8 @@ function UserHome() {
     return (
         <Section sx={{ minHeight: '86vh' }}>
             <FlexRow gap={'16px'} sx={{ justifyContent: 'center' }}>
-                <FlexColumn >
+                <ProfileHero user={user} />
+                {/* <FlexColumn >
                     <Avatar alt={user.name.toUpperCase()} src={user?.avatar?.url || "#"}
                         variant='square'
                         sx={{
@@ -142,26 +132,30 @@ function UserHome() {
                         <InfoText label={'اسم المستخدم'} description={user?.userName} />
                     </FlexColumn>
                 </FlexColumn>
+
                 <Box flex={.9}>
                     <UserHeader user={user} flexDirection={'row'} variant={'circle'} avatar={false} />
-                </Box>
+                </Box> */}
+
             </FlexRow>
             {/* 
             <Typography variant='subBanner' >
                 مرحبًا :  {user.name}
             </Typography> */}
-            <Separator />
+            {/* <Separator /> */}
             {(user.role === user_roles.ONLINE || user.role == user_roles.STUDENT) ?
-                <Box sx={{ my: '16px' }}>
-                    <TitleSection title={lang.YOUR_SUBSCRIPTIONS} />
+                <Box>
+                    <TitleWithDividers title={lang.YOUR_SUBSCRIPTIONS} />
+                    {/* <TitleSection title={lang.YOUR_SUBSCRIPTIONS} /> */}
 
                     <Grid min='120px' sx={{ width: '100%' }}>
                         {modifiedButtons.btns}
                     </Grid>
                     {modifiedButtons.compos.find(compo => compo.value === activeCompo)?.compo}
                     <FlexColumn>
-                        <Separator />
+                        {/* <Separator /> */}
                         <Separator sx={{ width: '60%', opacity: "60%" }} />
+
                     </FlexColumn>
                     <LatestCourses user={user} />
                 </Box>

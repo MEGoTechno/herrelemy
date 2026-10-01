@@ -110,6 +110,7 @@ const UnitsPage = lazy(() => import("../pages/user/UnitsPage"))
 const CoursePage = lazy(() => import("../pages/user/CoursePage"))
 const LecturePage = lazy(() => import("../pages/user/LecturePage"))
 import CommercialUsers from "../pages/admin/CommercialUsers.jsx";
+import SubscriptionsPage from "../pages/user/SubscriptionsPage.jsx";
 
 const LectureIcon = () => {
     return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 17a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H9.46c.35.61.54 1.3.54 2h10v11h-9v2m4-10v2H9v13H7v-6H5v6H3v-8H1.5V9a2 2 0 0 1 2-2zM8 4a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2a2 2 0 0 1 2 2" /></svg>
@@ -127,12 +128,18 @@ export const sidebarLinks = [
         name: "سياسات الموقع", icon: <FcPrivacy size="22px" />, to: "/privacy",
         element: <PrivacyPage />
     }, {
-        name: "الكورسات", icon: <LiaSchoolSolid size="22px" />,
-        to: "/grades_registered", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], element: <GradesPage />
+        name: "اشتراكاتي", icon: <LiaSchoolSolid size="22px" />,
+        to: "/subscriptions", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], element: <SubscriptionsPage />
     }, {
-        name: "محاضراتى", icon: <FaSchool size="22px" />, to: "/grades/" + store?.getState()?.global?.user?.grade,
+        name: "كورسات المنصه", icon: <FaSchool size="22px" />, to: "/grades/" + store?.getState()?.global?.user?.grade,
         allowedTo: [user_roles.STUDENT, user_roles.ONLINE],
         // element: <UnitsPage /> Down
+    }, {
+        name: "الصفوف الدراسيه", icon: <LiaSchoolSolid size="22px" />,
+        to: "/grades_registered", allowedTo: [user_roles.STUDENT, user_roles.ONLINE], element: <GradesPage />
+    }, {
+        name: "محتويات اخري", icon: <LiaSchoolSolid size="22px" />,
+        allowedTo: [user_roles.STUDENT, user_roles.ONLINE]
     }, {
         name: "بنك الاسئله", icon: <CiBank size="22px" />, to: "/questions_bank",
         allowedTo: [user_roles.STUDENT, user_roles.ONLINE], isDisabled: false, info: { title: 'جديد', i: 2 },

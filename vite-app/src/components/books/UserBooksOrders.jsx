@@ -16,7 +16,7 @@ function UserBooksOrders({ orders = [] }) {
     return (
         <Stack spacing={1.5}>
             {orders.length === 0 && (
-                <Card sx={{ textAlign: "center", py: 5, bgcolor: "grey.50" }}>
+                <Card variant="outlined" sx={{ textAlign: "center", py: 5, bgcolor: "background.alt" }}>
                     <MenuBook sx={{ color: "text.secondary", mb: 1 }} />
                     <Typography color="text.secondary" variant="body2">لم تقم بشراء كتب حتي الأن !</Typography>
                 </Card>

@@ -1,88 +1,206 @@
-import { Avatar, Box, Divider, Typography } from '@mui/material'
-import { FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox'
 
-const defaultIcon = <img src='/assets/home.svg' style={{ maxWidth: '45px' }} />
-function TitleWithDividers({ title, desc = '', descVar = 'body1', color, variant = 'h5', avatar = '', icon = defaultIcon, sx = {}, children, bgcolor = 'orange' }) {
+import { Avatar, Box, Typography, useTheme } from '@mui/material';
+import { FlexColumn, FlexRow } from '../../style/mui/styled/Flexbox';
 
+const defaultIcon = (
+    <Box
+        component="img"
+        src="/assets/home.svg"
+        sx={{
+            width: 42,
+            height: 42,
+            objectFit: 'contain',
+        }}
+    />
+);
+
+function TitleWithDividers({
+    title,
+    desc = '',
+    descVar = 'body1',
+    color,
+    variant = 'h4',
+    avatar = '',
+    icon = defaultIcon,
+    sx = {},
+    children,
+    bgcolor,
+}) {
+    const accent = color || 'secondary.main';
+    const theme = useTheme()
     return (
-        <FlexColumn sx={{
-            my: '22px', width: '100%'
-        }}>
-            <FlexRow gap={'12px'} sx={{
-                position: 'relative',
-                textAlign: 'center',
-                flexWrap: 'nowrap',
-                // minWidth: '150px',
-                // backgroundColor: 'transparent', color: "neutral.0",
-                p: '6px 12px',
-                borderRadius: '6px', transition: '.3s all ease',
-                bgcolor,
-                '&:before, &:after': {
-                    content: "''",
-                    position: 'absolute',
-                    bottom: '-12px',
-                    border: '5px solid',
-                    borderTop: 'none',
-                    width: 'calc(100% + 16px)',
-                    height: '50%',
-                    borderColor: 'primary.main',
-                    transition: '.3s all ease',
-                    left: '-8px'
-                },
-                '&:after': {
-                    top: '-12px',
-                    border: '5px solid',
-                    borderColor: 'primary.main',
-                    borderBottom: 'none',
-                    right: '-8px'
-                },
-                '&:hover': {
-                    bgcolor: 'primary.main',
-                    color: 'grey.0'
-                },
-                '&:hover::after': {
-                    height: '100%',
-                },
-            }}>
-                {avatar && (
-                    <Avatar sx={{ bgcolor: 'primary.main', color: 'grey.0' }} src={avatar} />
-                )}
-                <Typography variant={variant} sx={{ textWrap: 'wrap', ...sx }} >
-                    {title}
-                </Typography>
-                {icon && icon}
+        <FlexColumn
+            sx={{
+                width: '100%',
+                my: '28px',
+                alignItems: 'stretch',
+            }}
+        >
+            {/* Main heading */}
+            <Box
+                sx={{
+                    position: 'relative',
+                    width: '100%',
+                    px: { xs: 1.5, sm: 2 },
+                    py: 1.5,
+                    borderRadius: '14px',
 
-            </FlexRow>
+                    background: `linear-gradient(
+            105deg,
+            ${theme.palette.primary.main} 100%,
+            ${theme.palette.primary.light} 65%,
+            ${theme.palette.background.paper} 0%
+        )`,
 
-            <Box sx={{ mt: '16px' }}>
-                <Typography variant={descVar} color={'neutral.0'} style={{ textIndent: '6px' }}>{desc}</Typography>
+                    color: 'grey.0',
+                    overflow: 'hidden',
+                }}
+            >
+                <FlexRow
+                    gap="12px"
+                    sx={{
+                        position: 'relative',
+                        zIndex: 1,
+                        width: '100%',
+                        minWidth: 0,
+                        alignItems: 'center',
+                    }}
+                >
+                    {/* Avatar */}
+                    {avatar && (
+                        <Avatar
+                            src={avatar}
+                            sx={{
+                                width: 46,
+                                height: 46,
+                                flexShrink: 0,
+
+                                bgcolor: accent,
+
+                                color: 'grey.0',
+
+                                border: '2px solid',
+                                borderColor: accent,
+
+                                boxShadow: `0 4px 14px rgba(0,0,0,.08)`,
+                            }}
+                        />
+                    )}
+
+                    {/* Icon */}
+                    {!avatar && icon && (
+                        <Box
+                            sx={{
+                                width: 48,
+                                height: 48,
+                                flexShrink: 0,
+
+                                display: 'grid',
+                                placeItems: 'center',
+
+                                borderRadius: '13px',
+
+                                bgcolor: 'background.paper',
+
+                                border: '1px solid',
+                                borderColor: 'divider',
+
+                                boxShadow:
+                                    '0 4px 15px rgba(0,0,0,.05)',
+                            }}
+                        >
+                            {icon}
+                        </Box>
+                    )}
+
+                    {/* Title */}
+                    <Box
+                        sx={{
+                            minWidth: 0,
+                            flex: 1,
+                        }}
+                    >
+                        <Typography
+                            variant={variant}
+                            sx={{
+                                fontWeight: 800,
+                                lineHeight: 1.35,
+
+                                color: 'grey.0',
+
+                                overflowWrap: 'anywhere',
+
+                                ...sx,
+                            }}
+                        >
+                            {title}
+                        </Typography>
+
+                        {children}
+                    </Box>
+                </FlexRow>
             </Box>
-            <Divider sx={{ border: '4px solid', borderColor: color || 'primary.main', borderRadius: '16px', opacity: '.7', width: '200px', my: '12px' }} />
 
+            {/* Description */}
+            {desc && (
+                <Typography
+                    variant={descVar}
+                    color="text.secondary"
+                    sx={{
+                        mt: 1.5,
+                        px: { xs: 1, sm: 2 },
+
+                        lineHeight: 1.8,
+
+                        textIndent: '6px',
+
+                        maxWidth: '850px',
+                    }}
+                >
+                    {desc}
+                </Typography>
+            )}
+
+            {/* Bottom decoration */}
+            <FlexRow
+                gap="7px"
+                sx={{
+                    mt: 1.5,
+                    px: { xs: 1, sm: 2 },
+                    alignItems: 'center',
+                }}
+            >
+                <Box
+                    sx={{
+                        width: 65,
+                        height: 4,
+                        borderRadius: 10,
+                        bgcolor: accent,
+                    }}
+                />
+
+                <Box
+                    sx={{
+                        width: 22,
+                        height: 4,
+                        borderRadius: 10,
+                        bgcolor: accent,
+                        opacity: 0.45,
+                    }}
+                />
+
+                <Box
+                    sx={{
+                        width: 7,
+                        height: 7,
+                        borderRadius: '50%',
+                        bgcolor: accent,
+                        opacity: 0.3,
+                    }}
+                />
+            </FlexRow>
         </FlexColumn>
-    )
-
-    // return (
-    //     <Box sx={{ my: '16px', color: 'primary.main', ...sx }}>
-    //         <Divider sx={{ border: '4px solid', borderColor: color || 'primary.main', borderRadius: '16px', opacity: '.7', width: '150px' }} />
-    //         <Divider sx={{ border: '4px solid', borderColor: color || 'primary.main', borderRadius: '16px', opacity: '.7', width: '75px', my: '12px' }} />
-
-    //         <FlexRow gap={'12px'} sx={{ flexWrap: 'nowrap' }}>
-    //             {avatar && (
-    //                 <Avatar sx={{ bgcolor: 'primary.main', color: 'grey.0' }} src={avatar} />
-    //             )}
-    //             {icon && icon}
-
-    //             <FlexColumn sx={{ alignItems: 'flex-start' }}>
-    //                 <Typography variant={variant} color={'neutral.0'}>{title}</Typography>
-    //                 {children}
-    //                 <Typography variant={descVar} color={'neutral.0'} mt={'6px'} style={{ textIndent: '6px' }}>{desc}</Typography>
-    //             </FlexColumn>
-    //         </FlexRow>
-
-    //         <Divider sx={{ border: '4px solid', borderColor: color || 'primary.main', borderRadius: '16px', opacity: '.7', width: '200px', my: '12px' }} />
-    //     </Box>
-    // )
+    );
 }
 
-export default TitleWithDividers
+export default TitleWithDividers;

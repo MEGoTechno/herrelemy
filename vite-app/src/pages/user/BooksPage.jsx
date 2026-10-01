@@ -46,7 +46,7 @@ export default function BooksPage() {
   const { data: books = [], setData: setBooks } = usePaginate({ getData, key: 'books', })
 
   const [getOrders] = useLazyGetBooksOrdersQuery()
-  const { data: orders = [], setData: setOrders } = usePaginate({ getData: getOrders, skip: !user?._id, key: 'booksOrders', params: { populate: 'book' } },)
+  const { data: orders = [], setData: setOrders } = usePaginate({ getData: getOrders, skip: !user?._id, key: 'booksOrders', params: { populate: 'book', user: user?._id } },)
 
   const returnOrder = (bookId) => orders.find((o) => o.book?._id === bookId);
 
