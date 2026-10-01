@@ -5,9 +5,11 @@ import UserHeader from '../ui/UserHeader';
 import { HashLink } from 'react-router-hash-link';
 import { FlexColumn } from '../../style/mui/styled/Flexbox';
 import InfoText from '../ui/InfoText';
+import useGrades from '../../hooks/useGrades';
 
 function ProfileHero({ user }) {
-    const stats = [["3", "الكورسات"], ["100", "المحاضرات"], ["50", "المكتملة"]];
+
+    const { grades } = useGrades()
 
     return (
         <Box
@@ -67,7 +69,7 @@ function ProfileHero({ user }) {
                     </Typography>
                     <Stack direction="row" alignItems="center" spacing={0.9} sx={{ opacity: 0.95 }}>
                         <SchoolRounded fontSize="small" />
-                        <Typography fontSize={15}>{user.grade}</Typography>
+                        <Typography fontSize={15}>{grades?.find(g => g.index === user.grade)?.name}</Typography>
                     </Stack>
                 </Box>
             </Stack>
