@@ -28,7 +28,7 @@ function LectureUserCard({ lecture, isSubscribed, currentUserIndex, currentLectu
     const { grades } = useGrades()
 
     const user = useSelector(s => s.global.user)
-    const [openAssets, setOpenAssets] = useState(false)
+    const [openAssets, setOpenAssets] = useState(true)
 
     const [paidStatus, setIsPaid] = useState(lecture?.isPaid && statusConstants.PAID)
     const subscribe = (res) => {
