@@ -15,9 +15,7 @@ function CoursesPage() {
         <Section>
             <TitleSection title={'كورسات المنصه'} />
             <FlexColumn gap={'16px'}>
-                <FlexRow>
-                    <GradesTabs grade={grade} setGrade={setGrade} counts={{}} />
-                </FlexRow>
+                <GradesTabs grade={grade} setGrade={setGrade} counts={{}} />
                 <CoursesList grade={grade} />
             </FlexColumn>
         </Section>
