@@ -15,7 +15,7 @@ function RevisionPoster() {
                 p: '22px 16px', bgcolor: 'background.alt', maxWidth: 'fit-content', m: '0 auto', borderRadius: '16px 16px 50%'
             }}>
                 <Box sx={{ borderRadius: '22px', overflow: 'hidden', border: '5px solid', borderColor: 'secondary.light' }}>
-                    <img style={{ maxWidth: '250px', verticalAlign: 'bottom' }} src="/assets/current.jpg" />
+                    <img style={{ maxWidth: '250px', verticalAlign: 'bottom' }} src="/assets/coupon.jpg" />
                 </Box>
 
                 <FlexColumn sx={{ gap: 2 }}>
