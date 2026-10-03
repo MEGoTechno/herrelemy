@@ -49,7 +49,7 @@ function CardHover({ img, title, desc, to, children, secure = false }) {
                     }}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="subtitle1" component="div" fontWeight={'500'} fontFamily={'main'} >
+                    <Typography gutterBottom variant="h5" component="div" fontFamily={'main'} >
                         {title}
                     </Typography>
                     <Divider sx={{ borderColor: 'primary.main', borderWidth: '2px', my: '16px', borderRadius: '16px' }} />
